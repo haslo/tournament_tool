@@ -16,6 +16,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rails-html-sanitizer'
 gem 'jbuilder'
 gem 'therubyracer',  platforms: :ruby
+gem 'autoprefixer-rails'
 
 gem 'paper_trail'
 gem 'decent_exposure'
