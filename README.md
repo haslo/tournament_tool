@@ -1,29 +1,30 @@
 README
 ===
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby, Rails
+---
 
-Things you may want to cover:
+This application started out using Ruby 2.2 Preview 1 and Rails 4.2 Beta 1.
 
-* Ruby version
+`.ruby-version` and `.ruby-gemset` point to reasonable values. So when you have RVM, just...
 
-* System dependencies
+```sh
+rvm install 2.2-preview1
+cd <repository>
+bundle install
+```
 
-* Configuration
+...and you're ready to run with `rails s`.
 
-* Database creation
+Test Suite
+---
 
-* Database initialization
+RSpec in `/spec` and Cucumber in `/features`. Run either one with its binary, or the suite with `rake` (it's the default task).
 
-* How to run the test suite
+Used Tools
+---
 
-* Services (job queues, cache servers, search engines, etc.)
+In addition to the gems in the `Gemfile`:
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* https://developer.android.com/design/style/typography.html
+* http://www.fontsquirrel.com/

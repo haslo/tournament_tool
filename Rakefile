@@ -3,6 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-task default: 'testing:all'
-
 Rails.application.load_tasks
