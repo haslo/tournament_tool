@@ -45,3 +45,25 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Netrunner';
+  src: font-url('netrunner.eot');
+  src: font-url('netrunner.eot?#iefix') format('embedded-opentype'),
+       font-url('netrunner.woff') format('woff'),
+       font-url('netrunner.ttf') format('truetype'),
+       font-url('netrunner.svg#Netrunner') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NetrunnerDB';
+  src: font-url('NRDB.eot');
+  src: font-url('NRDB?#iefix') format('embedded-opentype'),
+       font-url('NRDB.woff') format('woff'),
+       font-url('NRDB.ttf') format('truetype'),
+       font-url('NRDB.svg#NRDB') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

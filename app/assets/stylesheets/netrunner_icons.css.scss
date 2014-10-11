@@ -1,0 +1,140 @@
+*[class*='netrunner-icon-'] {
+  font-family: 'Netrunner' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.netrunner-icon-Shaper-smooth:before {
+  content: "\e613";
+}
+.netrunner-icon-Shaper:before {
+  content: "\e603";
+}
+.netrunner-icon-Honor-and-Profit:before {
+  content: "\e614";
+}
+.netrunner-icon-Spin-Cycle:before {
+  content: "\e615";
+}
+.netrunner-icon-Genesis-Cycle:before {
+  content: "\e616";
+}
+.netrunner-icon-Creation-and-Control:before {
+  content: "\e617";
+}
+.netrunner-icon-Core-Set:before {
+  content: "\e618";
+}
+.netrunner-icon-credit:before {
+  content: "\e600";
+}
+.netrunner-icon-recurring-credit:before {
+  content: "\e608";
+}
+.netrunner-icon-click:before {
+  content: "\e611";
+}
+.netrunner-icon-link:before {
+  content: "\e601";
+}
+.netrunner-icon-trash:before {
+  content: "\e606";
+}
+.netrunner-icon-mu:before {
+  content: "\e610";
+}
+.netrunner-icon-1mu:before {
+  content: "\e60a";
+}
+.netrunner-icon-subroutine:before {
+  content: "\e604";
+}
+.netrunner-icon-3mu:before {
+  content: "\e60e";
+}
+.netrunner-icon-2mu:before {
+  content: "\e60c";
+}
+.netrunner-icon-anarch:before {
+  content: "\e605";
+}
+.netrunner-icon-criminal:before {
+  content: "\e612";
+}
+.netrunner-icon-haas-bioroid:before {
+  content: "\e602";
+}
+.netrunner-icon-weyland-consortium:before {
+  content: "\e607";
+}
+.netrunner-icon-jinteki-simple:before {
+  content: "\e005";
+}
+.netrunner-icon-jinteki:before {
+  content: "\e609";
+}
+.netrunner-icon-nbn:before {
+  content: "\e60b";
+}
+.netrunner-icon-agenda:before {
+  content: "\e60d";
+}
+.netrunner-icon-rez:before {
+  content: "\e60f";
+}
+
+*[class*='nrdb-icon-'] {
+  font-family: 'NetrunnerDB' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.nrdb-icon-ice:before {
+  content: "\e001";
+}
+.nrdb-icon-hardware:before {
+  content: "\e002";
+}
+.nrdb-icon-action:before {
+  content: "\e003";
+}
+.nrdb-icon-hardware-alt:before {
+  content: "\e006";
+}
+.nrdb-icon-asset-alt:before {
+  content: "\e007";
+}
+.nrdb-icon-asset:before {
+  content: "\e008";
+}
+.nrdb-icon-upgrade:before {
+  content: "\e004";
+}
+.nrdb-icon-resource:before {
+  content: "\e000";
+}
+.nrdb-icon-program:before {
+  content: "\e600";
+}
+.nrdb-icon-identity:before {
+  content: "\e601";
+}
+.nrdb-icon-agenda:before {
+  content: "\e602";
+}
