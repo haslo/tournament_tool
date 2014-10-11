@@ -1,0 +1,9 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Bold';
+}
+body {
+  font-family: 'Roboto Regular' !important;
+}
+body > .navbar, body > .footer {
+  font-family: 'Roboto Condensed Light' !important;
+}

@@ -1,4 +1,10 @@
 en:
   layouts:
     application:
-      title: 'Tournament Tool - Android: Netrunner™'
+      title: 'Tournament Tool - Android:Netrunner'
+      footer_1: 'The information presented on this site about Android:Netrunner, both literal and graphical, is copyrighted by Fantasy Flight Games and/or Wizards of the Coast.'
+      footer_2: 'This website is not produced, endorsed, supported, or affiliated with Fantasy Flight Games and/or Wizards of the Coast.'
+      menu:
+        title: 'Android:Netrunner Tournament Tool'
+        home: 'Home'
+        about: 'About'

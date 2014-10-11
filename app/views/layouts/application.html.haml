@@ -12,31 +12,30 @@
     = csrf_meta_tags
 
   %body
-    .navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+    .navbar.navbar-default.navbar-fixed-top{:role => 'navigation'}
       .container
         .navbar-header
-          %button.navbar-toggle.collapsed{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+          %button.navbar-toggle.collapsed{data: {target: '.navbar-collapse', toggle: 'collapse'}, type: 'button'}
             %span.sr-only Toggle navigation
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.navbar-brand{:href => "#"} Project name
+          %a.navbar-brand{:href => root_path}= t('.menu.title')
         .collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li.active
-              %a{:href => "#"} Home
+              %a{:href => root_path}= t('.menu.home')
             %li
-              %a{:href => "#about"} About
-            %li
-              %a{:href => "#contact"} Contact
+              %a{:href => t('.menu.about')} About
     .container
       - flash.each do |type, message|
         %div{:class => "alert #{bootstrap_class_for(type)} fade in"}
           %button.close{data: {dismiss: 'alert'}}= '×'
           = message
-      .page-header
-        %h1 Sticky footer with fixed navbar
       = yield
     .footer
       .container
-        %p.text-muted Place sticky footer content here.
+        %p.text-muted
+          = t('.footer_1')
+          %br
+          = t('.footer_2')

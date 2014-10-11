@@ -22,6 +22,7 @@ gem 'paper_trail'
 gem 'decent_exposure'
 
 gem 'bootstrap-sass'
+gem 'font-awesome-sass'
 gem 'devise'
 
 group :development do
