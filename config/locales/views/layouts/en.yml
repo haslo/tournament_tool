@@ -7,4 +7,5 @@ en:
       menu:
         title: 'Android:Netrunner Tournament Tool'
         home: 'Home'
+        tournaments: 'Tournaments'
         about: 'About'
