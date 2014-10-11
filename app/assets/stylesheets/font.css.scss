@@ -33,3 +33,15 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Roboto Condensed Regular';
+  src: font-url('robotocondensed-regular-webfont.eot');
+  src: font-url('robotocondensed-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       font-url('robotocondensed-regular-webfont.woff2') format('woff2'),
+       font-url('robotocondensed-regular-webfont.woff') format('woff'),
+       font-url('robotocondensed-regular-webfont.ttf') format('truetype'),
+       font-url('robotocondensed-regular-webfont.svg#roboto_condensedregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

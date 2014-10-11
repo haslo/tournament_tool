@@ -3,7 +3,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 body {
   font-family: 'Roboto Regular' !important;
-}
-body > .navbar, body > .footer {
-  font-family: 'Roboto Condensed Light' !important;
+  .navbar, .footer {
+    font-family: 'Roboto Condensed Light' !important;
+    .active {
+      font-family: 'Roboto Condensed Regular' !important;
+    }
+  }
 }
