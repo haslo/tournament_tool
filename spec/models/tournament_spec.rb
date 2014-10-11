@@ -7,6 +7,28 @@ describe Tournament do
     expect(subject).to be_valid
   end
 
+  context 'show_key' do
+    before(:each) do
+      expect(subject.show_key).to be_blank
+      subject.save
+    end
+
+    it 'is automatically built upon save' do
+      expect(subject.show_key).to be_present
+    end
+
+    it 'is 10 random characters long' do
+      expect(subject.show_key).to match(/[0-9a-zA-Z\-_]{10}/)
+    end
+
+    it 'generates an unique key each time it is called' do
+      100.times do
+        FactoryGirl.create(:tournament)
+      end
+      expect(Tournament.all.map(&:show_key).uniq.count).to eq(Tournament.count)
+    end
+  end
+
   context 'admin_key' do
     before(:each) do
       expect(subject.admin_key).to be_blank
@@ -18,11 +40,11 @@ describe Tournament do
     end
 
     it 'is 20 random characters long' do
-      expect(subject.admin_key).to match(/[0-9a-zA-Z]{12}/)
+      expect(subject.admin_key).to match(/[0-9a-zA-Z\-_]{20}/)
     end
 
     it 'generates an unique key each time it is called' do
-      1000.times do
+      100.times do
         FactoryGirl.create(:tournament)
       end
       expect(Tournament.all.map(&:admin_key).uniq.count).to eq(Tournament.count)

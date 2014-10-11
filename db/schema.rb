@@ -19,10 +19,12 @@ ActiveRecord::Schema.define(version: 20141011220029) do
   create_table "tournaments", force: true do |t|
     t.string   "title"
     t.text     "description"
+    t.string   "show_key"
     t.string   "admin_key"
     t.datetime "tournament_start"
     t.datetime "tournament_end"
     t.string   "signup_url"
+    t.string   "creator_mail"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

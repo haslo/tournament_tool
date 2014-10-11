@@ -1,15 +1,19 @@
 class Tournament < ActiveRecord::Base
 
-  validates :title, :description, :tournament_start, presence: true
+  validates :title, presence: true
   validate :signup_url_must_look_legit
-  before_create :create_admin_key
+  before_create :create_keys
 
   private
 
-  def create_admin_key
+  def create_keys
     self.admin_key = loop do
       key = SecureRandom.urlsafe_base64(20)
       break key unless Tournament.exists?(admin_key: key)
+    end
+    self.show_key = loop do
+      key = SecureRandom.urlsafe_base64(10)
+      break key unless Tournament.exists?(show_key: key)
     end
   end
 
