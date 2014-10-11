@@ -23,10 +23,8 @@
           %a.navbar-brand{:href => root_path}= t('.menu.title')
         .collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li.active
-              %a{:href => root_path}= t('.menu.home')
-            %li
-              %a{:href => t('.menu.about')} About
+            - top_menu_items(self).each do |link, title, is_active|
+              %li{class: is_active ? 'active' : ''}= link_to(title, link)
     .container
       - flash.each do |type, message|
         %div{:class => "alert #{bootstrap_class_for(type)} fade in"}

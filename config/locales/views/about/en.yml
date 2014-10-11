@@ -1,0 +1,11 @@
+en:
+  about:
+    show:
+      title: 'About Android:Netrunner Tournament Tool'
+      about: |
+        <p>GitHub</p>
+        <p>Licenses</p>
+        <p>Tools</p>
+        <ul>
+          <li>Roboto</li>
+        </ul>
