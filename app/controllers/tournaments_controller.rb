@@ -8,32 +8,27 @@ class TournamentsController < ApplicationController
   before_filter :needs_admin_key, except: [:index, :show, :new, :create]
   before_filter :needs_show_key, only: [:show]
 
+  # TODO all actions :P
+
   def index
-    # TODO
   end
 
   def show
-    # TODO
   end
 
   def new
-    # TODO
   end
 
   def create
-    # TODO
   end
 
   def edit
-    # TODO
   end
 
   def update
-    # TODO
   end
 
   def destroy
-    # TODO
   end
 
   private

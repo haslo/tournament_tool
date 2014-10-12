@@ -1,7 +1,20 @@
-README
+Android:Netrunner Tournament Tools
 ===
 
-Ruby, Rails
+What is it?
+---
+
+* A tournament management software for TOs
+* An automatic pairing system for Swiss rounds and the cut to top X
+* A mobile-friendly and showscreen-friendly ranking list and schedule view
+* A little bit of an anonymized statistics view for TOs and interested parties
+
+Deployment
+---
+
+The application is not prepared for deployment yet. Will probably be deployable on Heroku.
+
+Development with Ruby, Rails
 ---
 
 This application started out using Ruby 2.2 Preview 1 and Rails 4.2 Beta 1.

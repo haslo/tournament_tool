@@ -17,7 +17,7 @@ class Tournament < ActiveRecord::Base
     end
     self.show_key = loop do
       key = SecureRandom.urlsafe_base64(8)
-      break key unless Tournament.exists?(show_key: key)
+      break key unless key =~ /[\-|_]/ || Tournament.exists?(show_key: key)
     end
   end
 

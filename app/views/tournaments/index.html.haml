@@ -1,12 +1,19 @@
+.page-header
+  %h1= t('.title')
+
 - if Rails.env.development?
   %table.table.table-striped
     %thead
       %tr
         %th= Tournament.human_attribute_name(:title)
-        %th{colspan: 2}= t('.tournament_links.links')
+        %th= Tournament.human_attribute_name(:description)
+        %th= t('.tournament_links.links')
     %tbody
       - tournaments.each do |tournament|
         %tr
           %td= tournament.title
-          %td= link_to t('.tournament_links.show'), tournament_path(id: tournament.show_key)
-          %td= link_to t('.tournament_links.admin'), edit_tournament_path(id: tournament.admin_key)
+          %td= tournament.description
+          %td
+            = link_to t('.tournament_links.show'), tournament_path(id: tournament.show_key)
+            %br
+            = link_to t('.tournament_links.admin'), edit_tournament_path(id: tournament.admin_key)
