@@ -1,0 +1,12 @@
+- if Rails.env.development?
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= Tournament.human_attribute_name(:title)
+        %th{colspan: 2}= t('.tournament_links.links')
+    %tbody
+      - tournaments.each do |tournament|
+        %tr
+          %td= tournament.title
+          %td= link_to t('.tournament_links.show'), home_path(id: tournament.show_key)
+          %td= link_to t('.tournament_links.admin'), home_path(id: tournament.admin_key)

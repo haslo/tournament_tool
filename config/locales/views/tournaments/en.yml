@@ -1,0 +1,7 @@
+en:
+  tournaments:
+    index:
+      tournament_links:
+        links: 'Links'
+        show: 'Show'
+        admin: 'Admin'

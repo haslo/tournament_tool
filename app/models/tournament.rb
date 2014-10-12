@@ -4,6 +4,10 @@ class Tournament < ActiveRecord::Base
   validate :signup_url_must_look_legit
   before_create :create_keys
 
+  def show_qr_code
+    RQRCode::QRCode.new(Rails.application.routes.url_helpers.home_url(id: show_key))
+  end
+
   private
 
   def create_keys

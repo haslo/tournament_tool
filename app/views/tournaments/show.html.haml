@@ -1,1 +1,1 @@
-= render '/shared_partials/qr_code', qr: RQRCode::QRCode.new(home_url(id: shown_tournament.show_key))
+= render '/shared_partials/qr_code', qr_code: shown_tournament.show_qr_code
