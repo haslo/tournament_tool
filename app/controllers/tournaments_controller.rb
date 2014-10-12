@@ -2,7 +2,7 @@ class TournamentsController < ApplicationController
 
   expose(:tournaments)
   expose(:tournament)
-  expose(:shown_tournament) { Tournament.find_by(show_key: params[:id]) || Tournament.find_by(admin_key: params[:id]) }
+  expose(:shown_tournament) { Tournament.find_by(show_key: params[:id]) }
   expose(:admin_tournament) { Tournament.find_by(admin_key: params[:id]) }
 
   before_filter :needs_admin_key, except: [:index, :show, :new, :create]
@@ -39,7 +39,7 @@ class TournamentsController < ApplicationController
   private
 
   def needs_admin_key
-    unless admin_tournament.present?
+    if admin_tournament.nil?
       if shown_tournament.present?
         redirect_to(action: :show, id: params[:id])
       else
@@ -49,7 +49,13 @@ class TournamentsController < ApplicationController
   end
 
   def needs_show_key
-    redirect_to(action: :index) unless shown_tournament.present?
+    if shown_tournament.nil?
+      if admin_tournament.present?
+        redirect_to(action: :edit, id: params[:id])
+      else
+        redirect_to(action: :index)
+      end
+    end
   end
 
 end

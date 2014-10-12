@@ -8,12 +8,11 @@ Rails.application.routes.draw do
     # to enable IPv4 binding on all interfaces and make QR codes work
   end
 
-  root to: 'home#index'
+  root to: 'tournaments#index'
 
   resource :about, only: [:show]
-  resources :tournaments
 
   # must be last, as it's kind of a catch-all
-  resources :home, only: [:show], path: '/'
+  resources :tournaments, path: '/', except: [:index]
 
 end
