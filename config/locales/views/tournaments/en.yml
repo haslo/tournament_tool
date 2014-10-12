@@ -6,3 +6,19 @@ en:
         links: 'Links'
         show: 'Show'
         admin: 'Admin'
+    show:
+      title: '%{tournament}'
+      tabs:
+        info: 'Info'
+        results: 'Results'
+        standings: 'Standings'
+    edit:
+      title: 'Admin: %{tournament}'
+      tabs:
+        signup: 'Signup'
+        register: 'Register'
+        schedule: 'Schedule'
+        run: 'Run'
+        info: 'Info'
+        results: 'Results'
+        standings: 'Standings'
