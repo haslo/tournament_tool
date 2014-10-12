@@ -12,7 +12,7 @@ class Tournament < ActiveRecord::Base
       break key unless Tournament.exists?(admin_key: key)
     end
     self.show_key = loop do
-      key = SecureRandom.urlsafe_base64(10)
+      key = SecureRandom.urlsafe_base64(8)
       break key unless Tournament.exists?(show_key: key)
     end
   end

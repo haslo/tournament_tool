@@ -12,6 +12,7 @@ describe TournamentsController do
 
     it 'loads the correct tournament with admin_key' do
       get(:show, id: tournament.admin_key)
+      expect(controller.admin_tournament).to eq(tournament)
       expect(controller.shown_tournament).to eq(tournament)
     end
 

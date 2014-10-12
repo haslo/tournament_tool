@@ -17,8 +17,8 @@ describe Tournament do
       expect(subject.show_key).to be_present
     end
 
-    it 'is 10 random characters long' do
-      expect(subject.show_key).to match(/[0-9a-zA-Z\-_]{10}/)
+    it 'is 8 random characters long' do
+      expect(subject.show_key).to match(/[0-9a-zA-Z\-_]{8}/)
     end
 
     it 'generates an unique key each time it is called' do

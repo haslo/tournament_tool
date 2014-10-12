@@ -24,10 +24,11 @@ gem 'decent_exposure'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'devise'
+gem 'rqrcode'
 
 group :development do
   gem 'haml-rails'
-  #gem 'spring'
+  gem 'spring'
 end
 
 group :development, :test do
