@@ -9,10 +9,10 @@
       %a.navbar-brand{:href => root_path}= t('.title')
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
-        - top_menu_items(self).each do |link, title, is_active|
-          %li{class: is_active ? 'active' : ''}= link_to(title, link)
+        - top_menu_items(self).each do |method, link, title, is_active|
+          %li{class: is_active ? 'active' : ''}= link_to(title, link, method: method)
       %ul.nav.navbar-nav.navbar-right
-        - right_menu_items(self).each do |link, title, is_active|
-          %li{class: is_active ? 'active' : ''}= link_to(title, link)
+        - right_menu_items(self).each do |method, link, title, is_active|
+          %li{class: is_active ? 'active' : ''}= link_to(title, link, method: method)
         - if account_signed_in?
           %li= image_tag(current_account.gravatar_url(secure: true, size: 50), width: 50, height: 50)
