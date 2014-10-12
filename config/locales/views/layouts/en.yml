@@ -10,4 +10,4 @@ en:
       login: 'Login'
       sign_up: 'Sign Up'
       logout: 'Logout'
-      profile: "%{email}'s Profile"
+      profile: 'Profile'

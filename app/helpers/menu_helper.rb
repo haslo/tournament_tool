@@ -10,7 +10,7 @@ module MenuHelper
   def right_menu_items(view)
     if account_signed_in?
       [
-        [edit_account_registration_path, view.t('.profile', email: current_account.email), view.request.path_info =~ /\A\/account/],
+        [edit_account_registration_path, view.t('.profile'), view.request.path_info =~ /\A\/account/],
         [destroy_account_session_path, view.t('.logout'), false]
       ]
     else

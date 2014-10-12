@@ -25,6 +25,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'devise'
 gem 'rqrcode'
+gem 'gravtastic'
 
 group :development do
   gem 'haml-rails'

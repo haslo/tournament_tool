@@ -14,3 +14,5 @@
       %ul.nav.navbar-nav.navbar-right
         - right_menu_items(self).each do |link, title, is_active|
           %li{class: is_active ? 'active' : ''}= link_to(title, link)
+        - if account_signed_in?
+          %li= image_tag(current_account.gravatar_url(secure: true, size: 50), width: 50, height: 50)

@@ -1,5 +1,8 @@
 class Account < ActiveRecord::Base
 
+  include Gravtastic
+  has_gravatar
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,
