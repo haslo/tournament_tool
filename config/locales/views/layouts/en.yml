@@ -2,8 +2,12 @@ en:
   layouts:
     application:
       title: 'Tournament Tool - Android:Netrunner'
-      menu:
-        title: 'Android:Netrunner Tournament Tool'
-        home: 'Home'
-        tournaments: 'Tournaments'
-        about: 'About'
+    navigation:
+      title: 'Android:Netrunner Tournament Tool'
+      home: 'Home'
+      tournaments: 'Tournaments'
+      about: 'About'
+      login: 'Login'
+      sign_up: 'Sign Up'
+      logout: 'Logout'
+      profile: "%{email}'s Profile"

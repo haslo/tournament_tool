@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :accounts
   if Rails.env.development?
     local_ip = `ifconfig |grep inet`.split("\n").last.scan(/\d{1,3}/)[0..3].join('.')
     default_url_options :host => "#{local_ip}:3000"
