@@ -15,7 +15,7 @@
     = render :partial => '/layouts/navigation'
     .container
       - flash.each do |type, message|
-        %div{:class => "alert #{bootstrap_class_for(type)} fade in"}
+        %div{class: "alert #{bootstrap_class_for(type)} alert-dismissible", role: 'alert'}
           %button.close{data: {dismiss: 'alert'}}= '×'
           = message
       = yield
