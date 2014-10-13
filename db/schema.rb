@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013193730) do
+ActiveRecord::Schema.define(version: 20141013194401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,17 +39,60 @@ ActiveRecord::Schema.define(version: 20141013193730) do
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
   add_index "accounts", ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true, using: :btree
 
+  create_table "pairings", force: true do |t|
+    t.integer  "rounds_id"
+    t.integer  "participant_1_id"
+    t.integer  "participant_2_id"
+    t.string   "result"
+    t.json     "participant_1_data"
+    t.json     "participant_2_data"
+    t.json     "pairing_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pairings", ["participant_1_id"], name: "index_pairings_on_participant_1_id", using: :btree
+  add_index "pairings", ["participant_2_id"], name: "index_pairings_on_participant_2_id", using: :btree
+
   create_table "participants", force: true do |t|
     t.integer  "tournament_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "participant_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.json     "participant_data"
+  end
+
+  add_index "participants", ["tournament_id"], name: "index_participants_on_tournament_id", using: :btree
+
+  create_table "rounds", force: true do |t|
+    t.integer  "stages_id"
+    t.datetime "round_start_override"
+    t.datetime "round_end_override"
+    t.boolean  "has_started",          default: false, null: false
+    t.boolean  "has_ended",            default: false, null: false
+    t.json     "round_data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "participants", ["tournament_id"], name: "index_participants_on_tournament_id", using: :btree
+  add_index "rounds", ["stages_id"], name: "index_rounds_on_stages_id", using: :btree
+
+  create_table "stages", force: true do |t|
+    t.integer  "tournaments_id"
+    t.datetime "stage_start"
+    t.datetime "stage_end"
+    t.datetime "doors_open_time"
+    t.integer  "number_of_rounds"
+    t.integer  "minutes_per_round"
+    t.string   "type"
+    t.json     "stage_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stages", ["tournaments_id"], name: "index_stages_on_tournaments_id", using: :btree
 
   create_table "tournaments", force: true do |t|
     t.string   "title"
@@ -59,10 +102,12 @@ ActiveRecord::Schema.define(version: 20141013193730) do
     t.datetime "tournament_start"
     t.datetime "tournament_end"
     t.string   "signup_url"
-    t.string   "creator_mail"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "account_id"
+    t.datetime "doors_open_time"
+    t.json     "tournament_data"
+    t.string   "type"
   end
 
   add_index "tournaments", ["account_id"], name: "index_tournaments_on_account_id", using: :btree

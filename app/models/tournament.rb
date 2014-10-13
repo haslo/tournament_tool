@@ -3,7 +3,9 @@ require 'rqrcode'
 class Tournament < ActiveRecord::Base
 
   belongs_to :account
-  validates :title, presence: true
+  has_many :stages
+
+  validates :title, :account_id, presence: true
   before_create :create_keys
 
   def show_qr_code
