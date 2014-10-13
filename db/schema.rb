@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141012131645) do
+ActiveRecord::Schema.define(version: 20141013193730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,18 @@ ActiveRecord::Schema.define(version: 20141012131645) do
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
   add_index "accounts", ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true, using: :btree
 
+  create_table "participants", force: true do |t|
+    t.integer  "tournament_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "participant_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "participants", ["tournament_id"], name: "index_participants_on_tournament_id", using: :btree
+
   create_table "tournaments", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -50,6 +62,9 @@ ActiveRecord::Schema.define(version: 20141012131645) do
     t.string   "creator_mail"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
+
+  add_index "tournaments", ["account_id"], name: "index_tournaments_on_account_id", using: :btree
 
 end

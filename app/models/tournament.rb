@@ -2,6 +2,7 @@ require 'rqrcode'
 
 class Tournament < ActiveRecord::Base
 
+  belongs_to :account
   validates :title, presence: true
   before_create :create_keys
 
