@@ -3,7 +3,13 @@ en:
     show:
       title: 'About Tournament Tool'
       about: |
-        <h2>About</h2>
+        <h2>What is this?</h2>
+        <ul>
+          <li>A tournament management software for TOs - definitely for Android:Netrunner, but extendable (and will probably be extended early for X-Wing and MtG)</li>
+          <li>An automatic pairing system for Swiss rounds and the cut to top X</li>
+          <li>A mobile-friendly and showscreen-friendly ranking list and schedule view</li>
+          <li>A little bit of an anonymized statistics view for TOs and interested parties</li>
+        </ul>
         <p><a href="https://github.com/haslo/tournament_tool">Visit the project on GitHub.</a></p>
         <h2>Disclaimer & License</h2>
         <p>

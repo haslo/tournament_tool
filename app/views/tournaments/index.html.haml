@@ -1,18 +1,22 @@
 .page-header
   %h1= t('.title')
 
-- if Rails.env.development?
+- if tournaments.any?
   %table.table.table-striped
     %thead
       %tr
         %th= Tournament.human_attribute_name(:title)
         %th= Tournament.human_attribute_name(:description)
+        %th= Tournament.human_attribute_name(:touranment_type)
+        %th= Tournament.human_attribute_name(:tournament_start)
         %th= t('.tournament_links.links')
     %tbody
       - tournaments.each do |tournament|
         %tr
           %td= tournament.title
           %td= tournament.description
+          %td= tournament.tournament_type
+          %td= tournament.tournament_start.present? ? l(tournament.tournament_start, format: :short) : ''
           %td
             = link_to t('.tournament_links.show'), tournament_path(id: tournament.show_key)
             %br

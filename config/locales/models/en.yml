@@ -1,0 +1,10 @@
+en:
+  activerecord:
+    models:
+      tournament: Tournament
+    attributes:
+      tournament:
+        title: 'Title'
+        description: 'Description'
+        touranment_type: 'Type'
+        tournament_start: 'Start'

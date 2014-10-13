@@ -1,9 +1,11 @@
 class TournamentsController < ApplicationController
 
-  expose(:tournaments)
+  before_action :authenticate_account!, except: :show
+
+  expose(:tournaments) { decorate_list(current_account.tournaments) }
   expose(:tournament)
-  expose(:shown_tournament) { Tournament.find_by(show_key: params[:id]) }
-  expose(:admin_tournament) { Tournament.find_by(admin_key: params[:id]) }
+  expose(:shown_tournament) { decorate(Tournament.find_by(show_key: params[:id])) }
+  expose(:admin_tournament) { decorate(Tournament.find_by(admin_key: params[:id])) }
 
   expose(:edit_tabs) {
     [

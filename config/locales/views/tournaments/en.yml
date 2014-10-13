@@ -1,7 +1,7 @@
 en:
   tournaments:
     index:
-      title: 'Tournaments'
+      title: 'My Tournaments'
       tournament_links:
         links: 'Links'
         show: 'Show'
