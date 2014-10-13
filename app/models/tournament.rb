@@ -1,3 +1,5 @@
+require 'rqrcode'
+
 class Tournament < ActiveRecord::Base
 
   validates :title, presence: true
@@ -8,6 +10,10 @@ class Tournament < ActiveRecord::Base
     RQRCode::QRCode.new(Rails.application.routes.url_helpers.tournament_url(id: show_key))
   end
 
+  def admin_qr_code
+    RQRCode::QRCode.new(Rails.application.routes.url_helpers.tournament_url(id: admin_key))
+  end
+
   private
 
   def create_keys
@@ -16,7 +22,7 @@ class Tournament < ActiveRecord::Base
       break key unless Tournament.exists?(admin_key: key)
     end
     self.show_key = loop do
-      key = SecureRandom.urlsafe_base64(8)
+      key = SecureRandom.urlsafe_base64(10)
       break key unless key =~ /[\-|_]/ || Tournament.exists?(show_key: key)
     end
   end

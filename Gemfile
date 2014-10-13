@@ -24,7 +24,7 @@ gem 'decent_exposure'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'devise'
-gem 'rqrcode'
+gem 'rqrcode-with-patches'
 gem 'gravtastic'
 
 group :development do

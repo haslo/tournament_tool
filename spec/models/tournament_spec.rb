@@ -18,7 +18,7 @@ describe Tournament do
     end
 
     it 'is 11 random characters long' do
-      expect(subject.show_key).to match(/\A[0-9a-zA-Z\-_]{11}\Z/)
+      expect(subject.show_key).to match(/\A[0-9a-zA-Z\-_]{14}\Z/)
     end
 
     it 'generates an unique key each time it is called' do
