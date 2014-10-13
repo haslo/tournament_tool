@@ -1,10 +1,10 @@
-Android:Netrunner Tournament Tools
+Tournament Tool
 ===
 
 What is it?
 ---
 
-* A tournament management software for TOs
+* A tournament management software for TOs - definitely for Android:Netrunner, but extendable (and will probably be extended early for X-Wing and MtG)
 * An automatic pairing system for Swiss rounds and the cut to top X
 * A mobile-friendly and showscreen-friendly ranking list and schedule view
 * A little bit of an anonymized statistics view for TOs and interested parties

@@ -1,10 +1,9 @@
 en:
   layouts:
     application:
-      title: 'Tournament Tool - Android:Netrunner'
+      title: 'Tournament Tool'
     navigation:
-      title: 'Android:Netrunner Tournament Tool'
-      home: 'Home'
+      title: 'Tournament Tool'
       tournaments: 'Tournaments'
       about: 'About'
       login: 'Login'

@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: anr_tournaments_development
+  database: tournament_tool_development
   pool: 5
   username: postgres
   password: postgres
@@ -9,7 +9,7 @@ development:
 test: &test
   adapter: postgresql
   encoding: unicode
-  database: anr_tournaments_test
+  database: tournament_tool_test
   pool: 5
   username: postgres
   password: postgres

@@ -3,7 +3,6 @@ require 'rqrcode'
 class Tournament < ActiveRecord::Base
 
   validates :title, presence: true
-  validate :signup_url_must_look_legit
   before_create :create_keys
 
   def show_qr_code
@@ -25,10 +24,6 @@ class Tournament < ActiveRecord::Base
       key = SecureRandom.urlsafe_base64(10)
       break key unless key =~ /[\-|_]/ || Tournament.exists?(show_key: key)
     end
-  end
-
-  def signup_url_must_look_legit
-    # TODO - fetch contents, look for "android" or "netrunner"
   end
 
 end
