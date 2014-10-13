@@ -1,0 +1,12 @@
+%ul.nav.nav-tabs
+  - new_tabs.each do |tab, icon|
+    - is_active = tab == active_tab
+    %li{class: is_active ? 'active' : ''}
+      = link_to(tab: tab) do
+        %span{class: "glyphicon glyphicon-#{icon}"}
+        = t(".tabs.#{tab}")
+
+.page-header
+  %h1= t('.title')
+.container
+  = render active_tab

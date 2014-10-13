@@ -19,5 +19,11 @@
           %td= tournament.tournament_start.present? ? l(tournament.tournament_start, format: :short) : ''
           %td
             = link_to t('.tournament_links.show'), tournament_path(id: tournament.show_key)
-            %br
+            = '-'
             = link_to t('.tournament_links.admin'), edit_tournament_path(id: tournament.admin_key)
+
+- else
+  %p= t('.no_tournaments')
+
+.span9.btn-block
+  %a.btn.btn-large.btn-block.btn-primary{:type => 'button', href: new_tournament_path}= t('.create_tournament')

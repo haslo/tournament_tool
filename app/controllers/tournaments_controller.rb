@@ -7,25 +7,31 @@ class TournamentsController < ApplicationController
   expose(:shown_tournament) { decorate(Tournament.find_by(show_key: params[:id])) }
   expose(:admin_tournament) { decorate(Tournament.find_by(admin_key: params[:id])) }
 
+  expose(:new_tabs) {
+    [
+      %w[create floppy-disk],
+      %w[verify check]
+    ]
+  }
   expose(:edit_tabs) {
     [
+      %w[info qrcode],
       %w[signup edit],
       %w[register list],
       %w[schedule film],
       %w[run play],
-      %w[info qrcode],
       %w[results random],
-      %w[standings tasks],
+      %w[standings tasks]
     ]
   }
   expose(:show_tabs) {
     [
       %w[info qrcode],
       %w[results random],
-      %w[standings tasks],
+      %w[standings tasks]
     ]
   }
-  expose(:active_tab) { params[:tab] || (admin_tournament && 'signup' || shown_tournament && 'info') }
+  expose(:active_tab) { params[:tab] || (admin_tournament && 'signup' || shown_tournament && 'info') || 'create' }
 
   before_filter :needs_admin_key, except: [:index, :show, :new, :create]
   before_filter :needs_show_key, only: [:show]
