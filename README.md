@@ -27,7 +27,7 @@ cd <repository>
 bundle install
 ```
 
-...and you're ready to run with `rails s`.
+...and you're ready to run with `rails s`. If you want to have IPv4 bindings (and thus be able to use QR codes locally), please use `rails s -b 0.0.0.0`.
 
 Test Suite
 ---
