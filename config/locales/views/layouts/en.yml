@@ -5,6 +5,7 @@ en:
     navigation:
       title: 'Tournament Tool'
       tournaments: 'Tournaments'
+      leagues: 'Leagues'
       about: 'About'
       login: 'Login'
       sign_up: 'Sign Up'

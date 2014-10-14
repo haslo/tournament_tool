@@ -1,5 +1,6 @@
 class Account < ActiveRecord::Base
 
+  has_many :leagues
   has_many :tournaments
 
   include Gravtastic

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   root to: 'tournaments#index'
 
   resource :about, only: [:show]
+  resources :leagues
 
   # must be last, as it's kind of a catch-all
   resources :tournaments, path: '/', except: [:index]

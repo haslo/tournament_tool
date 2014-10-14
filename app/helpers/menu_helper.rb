@@ -3,6 +3,7 @@ module MenuHelper
   def top_menu_items(view)
     [
       [:get, tournaments_path, view.t('.tournaments'), view.request.path_info =~ /\A\/([^\/]{14}|[^\/]{27}|)(\/edit|)\Z/],
+      [:get, leagues_path, view.t('.leagues'), view.request.path_info.start_with?('/league')],
       [:get, about_path, view.t('.about'), view.request.path_info == '/about'],
     ]
   end

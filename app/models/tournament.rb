@@ -3,6 +3,7 @@ require 'rqrcode'
 class Tournament < ActiveRecord::Base
 
   belongs_to :account
+  belongs_to :league
   has_many :stages
 
   validates :title, :account_id, presence: true

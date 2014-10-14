@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013194401) do
+ActiveRecord::Schema.define(version: 20141014133835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,19 @@ ActiveRecord::Schema.define(version: 20141013194401) do
   add_index "accounts", ["confirmation_token"], name: "index_accounts_on_confirmation_token", unique: true, using: :btree
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
   add_index "accounts", ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true, using: :btree
+
+  create_table "leagues", force: true do |t|
+    t.integer  "account_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "league_url"
+    t.json     "league_data"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "leagues", ["account_id"], name: "index_leagues_on_account_id", using: :btree
 
   create_table "pairings", force: true do |t|
     t.integer  "rounds_id"
