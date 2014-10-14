@@ -1,7 +1,7 @@
 .page-header
   %h1= t('.title')
 
-- if tournaments.any?
+- if decorated_tournaments.any?
   %table.table.table-striped
     %thead
       %tr
@@ -11,7 +11,7 @@
         %th= Tournament.human_attribute_name(:tournament_start)
         %th= t('.tournament_links.links')
     %tbody
-      - tournaments.each do |tournament|
+      - decorated_tournaments.each do |tournament|
         %tr
           %td= tournament.title
           %td= tournament.description

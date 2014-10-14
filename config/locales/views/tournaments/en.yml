@@ -11,8 +11,14 @@ en:
     new:
       title: 'New Tournament'
       tabs:
-        create: 'Create'
-        verify: 'Verify'
+        basic: 'Basic'
+        advanced: 'Advanced'
+    basic:
+      next_step: 'Next Step'
+      types:
+        netrunner: 'Android:Netrunner'
+    advanced:
+      create_tournament: 'Create Tournament'
     show:
       title: '%{tournament}'
       tabs:

@@ -2,15 +2,16 @@ class TournamentsController < ApplicationController
 
   before_action :authenticate_account!, except: [:show, :edit]
 
-  expose(:tournaments) { decorate_list(current_account.tournaments) }
+  expose(:decorated_tournaments) { decorate_list(tournaments) }
+  expose(:tournaments) { current_account.tournaments }
   expose(:tournament)
   expose(:shown_tournament) { decorate(Tournament.find_by(show_key: params[:id])) }
   expose(:admin_tournament) { decorate(Tournament.find_by(admin_key: params[:id])) }
 
   expose(:new_tabs) {
     [
-      %w[create floppy-disk],
-      %w[verify check]
+      %w[basic edit],
+      %w[advanced check]
     ]
   }
   expose(:edit_tabs) {
@@ -31,7 +32,7 @@ class TournamentsController < ApplicationController
       %w[standings tasks]
     ]
   }
-  expose(:active_tab) { params[:tab] || (admin_tournament && 'signup' || shown_tournament && 'info') || 'create' }
+  expose(:active_tab) { params[:tab] || (admin_tournament && 'signup' || shown_tournament && 'info') || 'basic' }
 
   before_filter :needs_admin_key, except: [:index, :show, :new, :create]
   before_filter :needs_show_key, only: [:show]

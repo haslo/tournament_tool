@@ -1,8 +1,8 @@
 %ul.nav.nav-tabs
   - new_tabs.each do |tab, icon|
     - is_active = tab == active_tab
-    %li{class: is_active ? 'active' : ''}
-      = link_to(tab: tab) do
+    %li{class: is_active ? 'active' : 'disabled'}
+      = link_to(tab: is_active ? tab : active_tab) do
         %span{class: "glyphicon glyphicon-#{icon}"}
         = t(".tabs.#{tab}")
 
