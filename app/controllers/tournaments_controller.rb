@@ -1,6 +1,6 @@
 class TournamentsController < ApplicationController
 
-  before_action :authenticate_account!, except: :show
+  before_action :authenticate_account!, except: [:show, :edit]
 
   expose(:tournaments) { decorate_list(current_account.tournaments) }
   expose(:tournament)

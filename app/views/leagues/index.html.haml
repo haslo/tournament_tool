@@ -1,1 +1,27 @@
-index
+.page-header
+  %h1= t('.title')
+
+- if leagues.any?
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= League.human_attribute_name(:title)
+        %th= League.human_attribute_name(:description)
+        %th= League.human_attribute_name(:league_type)
+        %th= t('.league_links.links')
+    %tbody
+      - leagues.each do |league|
+        %tr
+          %td= league.title
+          %td= league.description
+          %td= league.tournament_type
+          %td
+            = link_to t('.league_links.show'), tournament_path(id: league.show_key)
+            = '-'
+            = link_to t('.league_links.admin'), edit_tournament_path(id: league.admin_key)
+
+- else
+  %p= t('.no_leagues')
+
+.span9.btn-block
+  %a.btn.btn-large.btn-block.btn-primary{:type => 'button', href: new_league_path}= t('.create_league')

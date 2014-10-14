@@ -17,7 +17,7 @@ describe Tournament do
       expect(subject.show_key).to be_present
     end
 
-    it 'is 11 random characters long' do
+    it 'is 14 random characters long' do
       expect(subject.show_key).to match(/\A[0-9a-zA-Z\-_]{14}\Z/)
     end
 

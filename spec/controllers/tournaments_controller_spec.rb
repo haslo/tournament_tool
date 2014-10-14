@@ -2,6 +2,8 @@ require_relative '../rails_helper'
 
 describe TournamentsController do
 
+  include Devise::TestHelpers
+
   let(:tournament) { FactoryGirl.create(:tournament) }
 
   describe 'GET show' do
