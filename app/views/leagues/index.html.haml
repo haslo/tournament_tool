@@ -16,9 +16,8 @@
           %td= league.description
           %td= league.tournament_type
           %td
-            = link_to t('.league_links.show'), tournament_path(id: league.show_key)
-            = '-'
-            = link_to t('.league_links.admin'), edit_tournament_path(id: league.admin_key)
+            = link_to t('.league_links.show'), league_path(id: league.show_key), class: 'btn btn-primary'
+            = link_to t('.league_links.admin'), edit_league_path(league), class: 'btn btn-primary'
 
 - else
   %p= t('.no_leagues')

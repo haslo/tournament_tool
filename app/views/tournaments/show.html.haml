@@ -9,4 +9,5 @@
 .page-header
   %h1= t('.title', tournament: shown_tournament.title)
 .container
+  = render 'info_header', tournament: decorate(shown_tournament)
   = render active_tab

@@ -1,16 +1,4 @@
-- decorated_tournament = decorate(admin_tournament)
-.row
-  .col-md-8
-    %h3= decorated_tournament.tournament_type
-    %table.table.table-striped
-      %tbody
-        %th= Tournament.human_attribute_name :title
-        %td= decorated_tournament.title
-  .col-md-4
-    %p
-      = render '/shared_partials/qr_code', qr_code: (shown_tournament || admin_tournament).show_qr_code
-
-= form_for admin_tournament, url: tournament_path(admin_tournament) do |f|
+= form_for tournament, as: :tournament, url: tournament_path(tournament) do |f|
   .form-group
     = f.label :doors_open_time
     = f.text_field :doors_open_time, class: 'form-control', placeholder: Tournament.human_attribute_name(:doors_open_time), type: 'datetime-local'

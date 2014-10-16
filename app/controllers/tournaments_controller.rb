@@ -2,12 +2,12 @@ class TournamentsController < ApplicationController
 
   respond_to :html, :xml, :json
 
-  before_action :authenticate_account!, except: [:show, :edit]
+  before_action :authenticate_account!, except: [:show]
+  before_action :verify_account, except: [:index, :show, :new, :create]
 
   expose(:tournaments) { current_account.tournaments }
   expose(:tournament)
   expose(:shown_tournament) { Tournament.find_by(show_key: params[:id]) }
-  expose(:admin_tournament) { Tournament.find_by(admin_key: params[:id]) }
 
   expose(:new_tabs) {
     [
@@ -17,7 +17,6 @@ class TournamentsController < ApplicationController
   }
   expose(:edit_tabs) {
     [
-      %w[info qrcode],
       %w[signup edit],
       %w[register list],
       %w[schedule film],
@@ -32,9 +31,20 @@ class TournamentsController < ApplicationController
       %w[standings tasks]
     ]
   }
-  expose(:active_tab) { params[:tab] || (admin_tournament && 'signup' || shown_tournament && 'info') || 'basic' }
+  expose(:active_tab) do
+    if params[:tab].present?
+      params[:tab]
+    else
+      if Tournament.find_by(id: params[:id]).present?
+        tournament.creation_completed? ? 'signup' : 'advanced'
+      elsif shown_tournament.present?
+        'info'
+      else
+        'basic'
+      end
+    end
+  end
 
-  before_filter :needs_admin_key, except: [:index, :show, :new, :create]
   before_filter :needs_show_key, only: [:show]
 
   # TODO all actions :P
@@ -53,7 +63,7 @@ class TournamentsController < ApplicationController
     tournament.attributes = tournament_attributes
     tournament.creation_completed = false
     if tournament.save
-      redirect_to action: :edit, tab: :advanced, id: tournament.admin_key
+      redirect_to action: :edit, tab: :advanced, id: tournament
     else
       respond_with tournament
     end
@@ -63,7 +73,13 @@ class TournamentsController < ApplicationController
   end
 
   def update
-    raise tournament.inspect
+    tournament.assign_attributes(tournament_attributes)
+    tournament.creation_completed = true
+    if tournament.save
+      redirect_to action: :edit, tab: :signup, id: tournament
+    else
+      respond_with tournament
+    end
   end
 
   def destroy
@@ -72,24 +88,14 @@ class TournamentsController < ApplicationController
 
   private
 
-  def needs_admin_key
-    if admin_tournament.nil?
-      if shown_tournament.present?
-        redirect_to(action: :show, id: params[:id])
-      else
-        redirect_to(action: :index)
-      end
+  def verify_account
+    if tournament.account != current_account
+      redirect_to action: :index
     end
   end
 
   def needs_show_key
-    if shown_tournament.nil?
-      if admin_tournament.present?
-        redirect_to(action: :edit, id: params[:id])
-      else
-        redirect_to(action: :index)
-      end
-    end
+    redirect_to(action: :index) if shown_tournament.nil?
   end
 
   def tournament_attributes

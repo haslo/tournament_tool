@@ -18,9 +18,8 @@
           %td= tournament.tournament_type
           %td= tournament.tournament_start.present? ? l(tournament.tournament_start, format: :short) : ''
           %td
-            = link_to t('.tournament_links.show'), tournament_path(id: tournament.show_key)
-            = '-'
-            = link_to t('.tournament_links.admin'), edit_tournament_path(id: tournament.admin_key)
+            = link_to t('.tournament_links.show'), tournament_path(id: tournament.show_key), class: 'btn btn-primary'
+            = link_to t('.tournament_links.admin'), edit_tournament_path(tournament), class: 'btn btn-primary'
 
 - else
   %p= t('.no_tournaments')
