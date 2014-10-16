@@ -17,4 +17,10 @@ body {
   .page-header {
     margin: 20px 0;
   }
+
+  .field_with_errors {
+    input {
+      background-color: #ffaaaa;
+    }
+  }
 }

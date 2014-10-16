@@ -1,12 +1,13 @@
 class TournamentsController < ApplicationController
 
+  respond_to :html, :xml, :json
+
   before_action :authenticate_account!, except: [:show, :edit]
 
-  expose(:decorated_tournaments) { decorate_list(tournaments) }
   expose(:tournaments) { current_account.tournaments }
   expose(:tournament)
-  expose(:shown_tournament) { decorate(Tournament.find_by(show_key: params[:id])) }
-  expose(:admin_tournament) { decorate(Tournament.find_by(admin_key: params[:id])) }
+  expose(:shown_tournament) { Tournament.find_by(show_key: params[:id]) }
+  expose(:admin_tournament) { Tournament.find_by(admin_key: params[:id]) }
 
   expose(:new_tabs) {
     [
@@ -21,14 +22,13 @@ class TournamentsController < ApplicationController
       %w[register list],
       %w[schedule film],
       %w[run play],
-      %w[results random],
       %w[standings tasks]
     ]
   }
   expose(:show_tabs) {
     [
       %w[info qrcode],
-      %w[results random],
+      %w[results eye-open],
       %w[standings tasks]
     ]
   }
@@ -49,15 +49,25 @@ class TournamentsController < ApplicationController
   end
 
   def create
+    tournament.account_id = current_account.id
+    tournament.attributes = tournament_attributes
+    tournament.creation_completed = false
+    if tournament.save
+      redirect_to action: :edit, tab: :advanced, id: tournament.admin_key
+    else
+      respond_with tournament
+    end
   end
 
   def edit
   end
 
   def update
+    raise tournament.inspect
   end
 
   def destroy
+    raise tournament.inspect
   end
 
   private
@@ -80,6 +90,16 @@ class TournamentsController < ApplicationController
         redirect_to(action: :index)
       end
     end
+  end
+
+  def tournament_attributes
+    params.require(:tournament).permit(:type,
+                                       :title,
+                                       :description,
+                                       :doors_open_time,
+                                       :tournament_start,
+                                       :tournament_end,
+                                       :signup_url)
   end
 
 end

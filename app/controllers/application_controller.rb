@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  decent_configuration do
+    strategy DecentExposure::StrongParametersStrategy
+  end
+
   private
 
   def decorate(model)
@@ -11,6 +15,7 @@ class ApplicationController < ActionController::Base
       model
     end
   end
+  helper_method(:decorate)
 
   def decorate_list(list)
     list.map do |item|
@@ -21,5 +26,6 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+  helper_method :decorate_list
 
 end

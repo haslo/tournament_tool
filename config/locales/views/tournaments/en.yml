@@ -28,10 +28,11 @@ en:
     edit:
       title: 'Admin: %{tournament}'
       tabs:
+        basic: 'Basic'
+        advanced: 'Advanced'
         signup: 'Signup'
         register: 'Register'
         schedule: 'Schedule'
         run: 'Run'
         info: 'Info'
-        results: 'Results'
         standings: 'Standings'

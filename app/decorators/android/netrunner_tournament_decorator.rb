@@ -5,5 +5,9 @@ module Android
       'Android:Netrunner'
     end
 
+    def short_info
+
+    end
+
   end
 end

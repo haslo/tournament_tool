@@ -9,6 +9,9 @@ class Tournament < ActiveRecord::Base
   validates :title, :account_id, presence: true
   before_create :create_keys
 
+  scope :incomplete, -> { where(creation_completed: false) }
+  scope :complete, -> { where(creation_completed: true) }
+
   def show_qr_code
     RQRCode::QRCode.new(Rails.application.routes.url_helpers.tournament_url(id: show_key))
   end
