@@ -10,6 +10,9 @@ en:
     new:
       title: 'New Tournament'
       create_tournament: 'Create Tournament'
+    update:
+      update_tournament: 'Update Tournament'
+    form:
       types:
         netrunner: 'Android:Netrunner'
     schedule:
@@ -24,8 +27,7 @@ en:
     edit:
       title: 'Admin: %{tournament}'
       tabs:
-        basic: 'Basic'
-        advanced: 'Advanced'
+        update: 'Update'
         signup: 'Signup'
         register: 'Register'
         schedule: 'Schedule'

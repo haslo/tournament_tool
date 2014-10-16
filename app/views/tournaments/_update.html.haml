@@ -1,0 +1,4 @@
+= form_for tournament, as: :tournament, url: tournament_path(tournament) do |f|
+  = render 'form', f: f
+  .form-group
+    = f.submit t('.update_tournament'), class: 'btn btn-large btn-block btn-primary'

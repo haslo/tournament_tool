@@ -5,7 +5,7 @@ class TournamentsController < ApplicationController
   before_action :authenticate_account!, except: [:show]
 
   expose(:tournaments) { current_account.tournaments.order(tournament_start: :desc, id: :desc) }
-  expose(:tournament)
+  expose(:tournament, attributes: :tournament_attributes)
   expose(:shown_tournament) { Tournament.find_by(show_key: params[:id]) }
 
   expose(:new_tabs) {
@@ -16,9 +16,10 @@ class TournamentsController < ApplicationController
   }
   expose(:edit_tabs) {
     [
+      %w[update home],
       %w[signup edit],
       %w[register list],
-      %w[schedule film],
+      %w[schedule calendar],
       %w[run play],
       %w[standings tasks]
     ]
@@ -35,7 +36,7 @@ class TournamentsController < ApplicationController
       params[:tab]
     else
       if Tournament.find_by(id: params[:id]).present?
-        'signup'
+        tournament.valid? ? 'signup' : 'update'
       elsif shown_tournament.present?
         'info'
       else
@@ -57,7 +58,6 @@ class TournamentsController < ApplicationController
 
   def create
     tournament.account_id = current_account.id
-    tournament.attributes = tournament_attributes
     if tournament.save
       flash[:notice] = I18n.t('messages.created', model: Tournament.model_name)
       redirect_to action: :edit, id: tournament
@@ -70,7 +70,6 @@ class TournamentsController < ApplicationController
   end
 
   def update
-    tournament.assign_attributes(tournament_attributes)
     if tournament.save
       flash[:notice] = I18n.t('messages.updated', model: Tournament.model_name)
       redirect_to action: :edit, tab: :signup, id: tournament

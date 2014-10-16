@@ -3,29 +3,6 @@
 
 .container
   = form_for tournament do |f|
-    .row
-      .col-md-7
-        .form-group
-          = f.label :type, class: 'required'
-          = f.select :type, [[t('.types.netrunner'), Android::NetrunnerTournament.name]], {}, {class: 'form-control'}
-        .form-group
-          = f.label :title, class: 'required'
-          = f.text_field :title, class: 'form-control', placeholder: Tournament.human_attribute_name(:title)
-        .form-group
-          = f.label :signup_url
-          = f.text_field :signup_url, class: 'form-control', placeholder: Tournament.human_attribute_name(:signup_url), type: 'url'
-      .col-md-5
-        .form-group
-          = f.label :doors_open_time
-          = f.text_field :doors_open_time, class: 'form-control', placeholder: Tournament.human_attribute_name(:doors_open_time), type: 'datetime-local'
-        .form-group
-          = f.label :tournament_start
-          = f.text_field :tournament_start, class: 'form-control', placeholder: Tournament.human_attribute_name(:tournament_start), type: 'datetime-local'
-        .form-group
-          = f.label :tournament_end
-          = f.text_field :tournament_end, class: 'form-control', placeholder: Tournament.human_attribute_name(:tournament_end), type: 'datetime-local'
-    .form-group
-      = f.label :description
-      = f.text_area :description, rows: 4, class: 'form-control', placeholder: Tournament.human_attribute_name(:description)
+    = render 'form', f: f
     .form-group
       = f.submit t('.create_tournament'), class: 'btn btn-large btn-block btn-primary'
