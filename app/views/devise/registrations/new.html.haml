@@ -1,5 +1,5 @@
 .page-header
-  %h1 Sign up
+  %h1= t('.title')
 
 .container
   .col-md-6.col-md-offset-3
@@ -11,13 +11,12 @@
       .form-group
         = f.label :password
         - if @validatable
-          %i
-            (#{@minimum_password_length} characters minimum)
+          %i= t('.minimum_chars', minimum: @minimum_password_length)
         = f.password_field :password, class: 'form-control', autocomplete: 'off'
       .form-group
         = f.label :password_confirmation
         = f.password_field :password_confirmation, class: 'form-control', autocomplete: 'off'
       .form-group
-        = f.submit 'Sign up', class: 'btn btn-large btn-block btn-primary'
+        = f.submit t('.submit'), class: 'btn btn-large btn-block btn-primary'
 
     = render '/devise/shared/links'

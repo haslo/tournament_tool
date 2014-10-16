@@ -1,5 +1,5 @@
 .page-header
-  %h1 Resend unlock instructions
+  %h1= t('.title')
 
 .container
   .col-md-6.col-md-offset-3
@@ -9,6 +9,6 @@
         = f.label :email
         = f.email_field :email, class: 'form-control', autofocus: true
       .form-group
-        = f.submit 'Resend unlock instructions', class: 'btn btn-large btn-block btn-primary'
+        = f.submit t('.submit'), class: 'btn btn-large btn-block btn-primary'
 
     = render '/devise/shared/links'
