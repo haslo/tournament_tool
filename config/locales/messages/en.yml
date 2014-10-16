@@ -1,0 +1,5 @@
+en:
+  messages:
+    created: 'New %{model} created'
+    updated: '%{model} updated'
+    destroyed: '%{model} destroyed'

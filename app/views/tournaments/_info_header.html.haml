@@ -1,18 +1,17 @@
 .row
   .col-md-9
-    %h3= t('.tournament_info')
     %table.table.table-striped
       %tbody
         %tr
-          %th= Tournament.human_attribute_name :type
-          %td= tournament.tournament_type
-        %tr
           %th= Tournament.human_attribute_name :title
           %td= tournament.title
-        - if tournament.tournament_start.present?
+        %tr
+          %th= Tournament.human_attribute_name :type
+          %td= tournament.tournament_type
+        - if tournament.signup_url.present?
           %tr
-            %th= Tournament.human_attribute_name :tournament_start
-            %td= l(tournament.tournament_start)
+            %th= Tournament.human_attribute_name :signup_url
+            %td= link_to tournament.signup_url, tournament.signup_url
   .col-md-3
     .pull-right
       = render '/shared_partials/qr_code', qr_code: (shown_tournament || tournament).show_qr_code

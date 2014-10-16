@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015221521) do
+ActiveRecord::Schema.define(version: 20141014133835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20141015221521) do
   add_index "leagues", ["account_id"], name: "index_leagues_on_account_id", using: :btree
 
   create_table "pairings", force: true do |t|
-    t.integer  "rounds_id"
+    t.integer  "round_id"
     t.integer  "participant_1_id"
     t.integer  "participant_2_id"
     t.string   "result"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20141015221521) do
 
   add_index "pairings", ["participant_1_id"], name: "index_pairings_on_participant_1_id", using: :btree
   add_index "pairings", ["participant_2_id"], name: "index_pairings_on_participant_2_id", using: :btree
+  add_index "pairings", ["round_id"], name: "index_pairings_on_round_id", using: :btree
 
   create_table "participants", force: true do |t|
     t.integer  "tournament_id"
@@ -80,7 +81,7 @@ ActiveRecord::Schema.define(version: 20141015221521) do
   add_index "participants", ["tournament_id"], name: "index_participants_on_tournament_id", using: :btree
 
   create_table "rounds", force: true do |t|
-    t.integer  "stages_id"
+    t.integer  "stage_id"
     t.datetime "round_start_override"
     t.datetime "round_end_override"
     t.boolean  "has_started",          default: false, null: false
@@ -90,10 +91,10 @@ ActiveRecord::Schema.define(version: 20141015221521) do
     t.datetime "updated_at"
   end
 
-  add_index "rounds", ["stages_id"], name: "index_rounds_on_stages_id", using: :btree
+  add_index "rounds", ["stage_id"], name: "index_rounds_on_stage_id", using: :btree
 
   create_table "stages", force: true do |t|
-    t.integer  "tournaments_id"
+    t.integer  "tournament_id"
     t.datetime "stage_start"
     t.datetime "stage_end"
     t.datetime "doors_open_time"
@@ -105,7 +106,7 @@ ActiveRecord::Schema.define(version: 20141015221521) do
     t.datetime "updated_at"
   end
 
-  add_index "stages", ["tournaments_id"], name: "index_stages_on_tournaments_id", using: :btree
+  add_index "stages", ["tournament_id"], name: "index_stages_on_tournament_id", using: :btree
 
   create_table "tournaments", force: true do |t|
     t.string   "title"
@@ -121,7 +122,6 @@ ActiveRecord::Schema.define(version: 20141015221521) do
     t.datetime "doors_open_time"
     t.json     "tournament_data"
     t.string   "type"
-    t.boolean  "creation_completed", default: false, null: false
   end
 
   add_index "tournaments", ["account_id"], name: "index_tournaments_on_account_id", using: :btree

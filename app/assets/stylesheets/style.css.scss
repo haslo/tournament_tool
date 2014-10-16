@@ -18,9 +18,15 @@ body {
     margin: 20px 0;
   }
 
-  .field_with_errors {
-    input {
-      background-color: #ffaaaa;
+  form {
+    .field_with_errors {
+      input {
+        background-color: #ffaaaa;
+      }
+    }
+    label.required:after {
+      content: ' *';
+      color: #cccccc;
     }
   }
 

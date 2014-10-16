@@ -3,9 +3,8 @@ class TournamentsController < ApplicationController
   respond_to :html, :xml, :json
 
   before_action :authenticate_account!, except: [:show]
-  before_action :verify_account, except: [:index, :show, :new, :create]
 
-  expose(:tournaments) { current_account.tournaments }
+  expose(:tournaments) { current_account.tournaments.order(tournament_start: :desc, id: :desc) }
   expose(:tournament)
   expose(:shown_tournament) { Tournament.find_by(show_key: params[:id]) }
 
@@ -36,7 +35,7 @@ class TournamentsController < ApplicationController
       params[:tab]
     else
       if Tournament.find_by(id: params[:id]).present?
-        tournament.creation_completed? ? 'signup' : 'advanced'
+        'signup'
       elsif shown_tournament.present?
         'info'
       else
@@ -46,8 +45,6 @@ class TournamentsController < ApplicationController
   end
 
   before_filter :needs_show_key, only: [:show]
-
-  # TODO all actions :P
 
   def index
   end
@@ -61,9 +58,9 @@ class TournamentsController < ApplicationController
   def create
     tournament.account_id = current_account.id
     tournament.attributes = tournament_attributes
-    tournament.creation_completed = false
     if tournament.save
-      redirect_to action: :edit, tab: :advanced, id: tournament
+      flash[:notice] = I18n.t('messages.created', model: Tournament.model_name)
+      redirect_to action: :edit, id: tournament
     else
       respond_with tournament
     end
@@ -74,8 +71,8 @@ class TournamentsController < ApplicationController
 
   def update
     tournament.assign_attributes(tournament_attributes)
-    tournament.creation_completed = true
     if tournament.save
+      flash[:notice] = I18n.t('messages.updated', model: Tournament.model_name)
       redirect_to action: :edit, tab: :signup, id: tournament
     else
       respond_with tournament
@@ -83,16 +80,12 @@ class TournamentsController < ApplicationController
   end
 
   def destroy
-    raise tournament.inspect
+    tournament.destroy
+    flash[:alert] = I18n.t('messages.destroyed', model: Tournament.model_name)
+    redirect_to action: :index
   end
 
   private
-
-  def verify_account
-    if tournament.account != current_account
-      redirect_to action: :index
-    end
-  end
 
   def needs_show_key
     redirect_to(action: :index) if shown_tournament.nil?

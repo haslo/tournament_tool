@@ -10,7 +10,7 @@ class CreateRounds < ActiveRecord::Migration
     add_column :participants, :participant_data, :json
 
     create_table :stages do |t|
-      t.references :tournaments, index: true
+      t.references :tournament, index: true
       t.datetime :stage_start
       t.datetime :stage_end
       t.datetime :doors_open_time
@@ -22,7 +22,7 @@ class CreateRounds < ActiveRecord::Migration
     end
 
     create_table :rounds do |t|
-      t.references :stages, index: true
+      t.references :stage, index: true
       t.datetime :round_start_override
       t.datetime :round_end_override
       t.boolean :has_started, default: false, null: false
@@ -32,7 +32,7 @@ class CreateRounds < ActiveRecord::Migration
     end
 
     create_table :pairings do |t|
-      t.references :rounds
+      t.references :round, index: true
       t.integer :participant_1_id
       t.integer :participant_2_id
       t.string :result

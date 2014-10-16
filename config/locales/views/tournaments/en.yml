@@ -9,15 +9,12 @@ en:
         admin: 'Admin'
     new:
       title: 'New Tournament'
-      tabs:
-        basic: 'Basic'
-        advanced: 'Advanced'
-    basic:
-      next_step: 'Next Step'
+      create_tournament: 'Create Tournament'
       types:
         netrunner: 'Android:Netrunner'
-    advanced:
-      create_tournament: 'Create Tournament'
+    schedule:
+      no_stages: "You haven't created any stages for this tournament yet."
+      create_stage: 'Create new stage'
     show:
       title: '%{tournament}'
       tabs:
@@ -34,5 +31,3 @@ en:
         schedule: 'Schedule'
         run: 'Run'
         standings: 'Standings'
-    info_header:
-      tournament_info: 'Tournament information'

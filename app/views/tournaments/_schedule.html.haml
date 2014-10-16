@@ -1,1 +1,7 @@
-schedule
+- if tournament.stages.any?
+  -# TODO
+- else
+  %p= t('.no_stages')
+
+.span9
+  %a.btn.btn-large.btn-block.btn-primary{:type => 'button', href: new_stage_path}= t('.create_stage')

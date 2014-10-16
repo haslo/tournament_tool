@@ -4,7 +4,11 @@ en:
       tournament: Tournament
     attributes:
       tournament:
+        type: 'Tournament type'
         title: 'Title'
+        signup_url: 'Signup URL'
         description: 'Description'
+        doors_open_time: 'Doors open'
         touranment_type: 'Type'
         tournament_start: 'Start'
+        tournament_end: 'End (tentative)'

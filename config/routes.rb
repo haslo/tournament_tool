@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resource :about, only: [:show]
   resources :leagues
+  resources :stages
 
   # must be last, as it's kind of a catch-all
   resources :tournaments, path: '/', except: [:index]
