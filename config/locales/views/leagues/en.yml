@@ -5,6 +5,5 @@ en:
       no_leagues: "You haven't created any leagues yet."
       create_league: 'Create new League'
       league_links:
-        links: 'Links'
         show: 'Show'
         admin: 'Admin'

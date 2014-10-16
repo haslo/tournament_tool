@@ -5,7 +5,6 @@ en:
       no_tournaments: "You haven't created any tournaments yet."
       create_tournament: 'Create new Tournament'
       tournament_links:
-        links: 'Links'
         show: 'Show'
         admin: 'Admin'
     new:

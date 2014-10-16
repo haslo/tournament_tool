@@ -8,14 +8,14 @@
         %th= League.human_attribute_name(:title)
         %th= League.human_attribute_name(:description)
         %th= League.human_attribute_name(:league_type)
-        %th= t('.league_links.links')
+        %th
     %tbody
       - leagues.each do |league|
         %tr
           %td= league.title
           %td= league.description
           %td= league.tournament_type
-          %td
+          %td.text-right
             = link_to t('.league_links.show'), league_path(id: league.show_key), class: 'btn btn-primary'
             = link_to t('.league_links.admin'), edit_league_path(league), class: 'btn btn-primary'
 

@@ -9,7 +9,7 @@
         %th= Tournament.human_attribute_name(:description)
         %th= Tournament.human_attribute_name(:touranment_type)
         %th= Tournament.human_attribute_name(:tournament_start)
-        %th= t('.tournament_links.links')
+        %th
     %tbody
       - decorate_list(tournaments).each do |tournament|
         %tr
@@ -17,7 +17,7 @@
           %td= tournament.description
           %td= tournament.tournament_type
           %td= tournament.tournament_start.present? ? l(tournament.tournament_start, format: :short) : ''
-          %td
+          %td.text-right
             = link_to t('.tournament_links.show'), tournament_path(id: tournament.show_key), class: 'btn btn-primary'
             = link_to t('.tournament_links.admin'), edit_tournament_path(tournament), class: 'btn btn-primary'
 
