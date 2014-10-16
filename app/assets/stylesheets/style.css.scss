@@ -17,6 +17,13 @@ body {
   .page-header {
     margin: 20px 0;
   }
+  .top-buffer {
+    margin-top:20px;
+  }
+  .stage-display {
+    background-color: #dddddd;
+    border: 1px solid #aaaaaa;
+  }
 
   form {
     .field_with_errors {

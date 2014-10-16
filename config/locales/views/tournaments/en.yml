@@ -18,6 +18,7 @@ en:
     schedule:
       no_stages: "You haven't created any stages for this tournament yet."
       create_stage: 'Create new stage'
+      destroy_stage: 'Destroy this stage'
     show:
       title: '%{tournament}'
       tabs:

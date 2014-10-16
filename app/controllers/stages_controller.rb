@@ -1,5 +1,7 @@
 class StagesController < ApplicationController
 
+  respond_to :html, :xml, :json
+
   before_action :authenticate_account!
 
   expose(:stages) { current_account.stages }
@@ -10,11 +12,9 @@ class StagesController < ApplicationController
   end
 
   def create
-    tournament.account_id = current_account.id
-    tournament.attributes = tournament_attributes
-    if tournament.save
-      flash[:notice] = I18n.t('messages.created', model: Tournament.model_name)
-      redirect_to action: :edit, id: tournament
+    if stage.save
+      flash[:notice] = I18n.t('messages.created', model: Stage.model_name)
+      redirect_to controller: :tournaments, action: :edit, id: tournament, tab: 'schedule'
     else
       respond_with tournament
     end
@@ -26,17 +26,17 @@ class StagesController < ApplicationController
   def update
     tournament.assign_attributes(tournament_attributes)
     if tournament.save
-      flash[:notice] = I18n.t('messages.updated', model: Tournament.model_name)
-      redirect_to action: :edit, tab: :signup, id: tournament
+      flash[:notice] = I18n.t('messages.updated', model: Stage.model_name)
+      redirect_to controller: :tournaments, action: :edit, id: tournament, tab: 'schedule'
     else
       respond_with tournament
     end
   end
 
   def destroy
-    tournament.destroy
-    flash[:alert] = I18n.t('messages.destroyed', model: Tournament.model_name)
-    redirect_to action: :index
+    stage.destroy
+    flash[:alert] = I18n.t('messages.destroyed', model: Stage.model_name)
+    redirect_to controller: :tournaments, action: :edit, id: tournament, tab: 'schedule'
   end
   private
 
