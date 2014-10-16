@@ -42,3 +42,10 @@ In addition to the gems in the `Gemfile`:
 * https://developer.android.com/design/style/typography.html
 * http://www.fontsquirrel.com/
 * https://github.com/MWDelaney/Netrunner-Icon-Font
+
+ToDo
+---
+
+Lots of stuff - almost everything, in fact. Links:
+
+* http://sourcey.com/rails-4-omniauth-using-devise-with-twitter-facebook-and-linkedin/ and https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
