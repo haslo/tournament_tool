@@ -4,15 +4,15 @@
       .col-md-7.stage-display
         %p= 'stage'
       .col-md-5
-        = link_to t('.destroy_stage'), stage_path(stage), class: 'btn btn-large btn-block btn-primary', :type => 'button', method: :delete
+        = link_to t('.destroy_stage'), stage_path(stage), class: 'btn btn-large btn-block btn-danger', :type => 'button', method: :delete
   .row
     .col-md-7
       &nbsp;
     .col-md-5
-      %a.btn.btn-large.btn-block.btn-primary{:type => 'button', href: new_stage_path}= t('.create_stage')
+      %a.btn.btn-large.btn-block.btn-success{:type => 'button', href: new_stage_path}= t('.create_stage')
 - else
   .row.top-buffer
     .col-md-7
       %p= t('.no_stages')
     .col-md-5
-      %a.btn.btn-large.btn-block.btn-primary{:type => 'button', href: new_stage_path}= t('.create_stage')
+      %a.btn.btn-large.btn-block.btn-success{:type => 'button', href: new_stage_path}= t('.create_stage')
