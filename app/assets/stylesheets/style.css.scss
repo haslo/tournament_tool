@@ -11,6 +11,12 @@ body {
     }
   }
 
+  @media (max-width: 991px) {
+    span.tab-description, .info-header {
+      display: none;
+    }
+  }
+
   > .container {
     padding: 60px 15px;
   }
@@ -20,9 +26,15 @@ body {
   .top-buffer {
     margin-top:20px;
   }
-  .stage-display {
-    background-color: #dddddd;
-    border: 1px solid #aaaaaa;
+  div.display-qr-code {
+    @media (min-width: 992px) {
+      float: right;
+    }
+    @media (max-width: 991px) {
+      left: 50%;
+      margin-left: -55px;
+      position: relative;
+    }
   }
 
   form {
@@ -34,6 +46,15 @@ body {
     label.required:after {
       content: ' *';
       color: #cccccc;
+    }
+  }
+
+  .stage-row, .stage-row div {
+    margin-bottom: 3px;
+    .stage-display {
+      background-color: #dddddd;
+      border: 1px solid #aaaaaa;
+      padding: 5px 10px;
     }
   }
 

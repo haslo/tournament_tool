@@ -13,5 +13,5 @@
             %th= Tournament.human_attribute_name :signup_url
             %td= link_to tournament.signup_url, tournament.signup_url
   .col-md-3
-    .pull-right
+    .display-qr-code
       = render '/shared_partials/qr_code', qr_code: (shown_tournament || tournament).show_qr_code

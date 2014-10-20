@@ -18,9 +18,10 @@ class TournamentsController < ApplicationController
     [
       %w[update home],
       %w[signup edit],
-      %w[register list],
       %w[schedule calendar],
+      %w[register list],
       %w[run play],
+      %w[timeline time],
       %w[standings tasks]
     ]
   }
@@ -28,6 +29,7 @@ class TournamentsController < ApplicationController
     [
       %w[info qrcode],
       %w[results eye-open],
+      %w[timeline time],
       %w[standings tasks]
     ]
   }

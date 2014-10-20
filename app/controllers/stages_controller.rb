@@ -24,12 +24,11 @@ class StagesController < ApplicationController
   end
 
   def update
-    tournament.assign_attributes(tournament_attributes)
-    if tournament.save
+    if stage.save
       flash[:notice] = I18n.t('messages.updated', model: Stage.model_name)
       redirect_to controller: :tournaments, action: :edit, id: tournament, tab: 'schedule'
     else
-      respond_with tournament
+      respond_with stage
     end
   end
 
@@ -41,13 +40,13 @@ class StagesController < ApplicationController
   private
 
   def stage_attributes
-    params.require(:tournament).permit(:type,
-                                       :title,
-                                       :description,
-                                       :doors_open_time,
-                                       :tournament_start,
-                                       :tournament_end,
-                                       :signup_url)
+    params.require(:stage).permit(:type,
+                                  :title,
+                                  :description,
+                                  :doors_open_time,
+                                  :tournament_start,
+                                  :tournament_end,
+                                  :signup_url)
   end
 
 end

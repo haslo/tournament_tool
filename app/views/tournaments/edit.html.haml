@@ -4,11 +4,13 @@
     %li{class: is_active ? 'active' : ''}
       = link_to(tab: tab) do
         %span{class: "glyphicon glyphicon-#{icon}"}
-        = t(".tabs.#{tab}")
+        %span.tab-description= t(".tabs.#{tab}")
 
 .page-header
   %h1= t('.title', tournament: tournament.title)
 
 .container
-  = render 'info_header', tournament: decorate(tournament)
+  .info-header
+    %h2= t(".tabs.#{active_tab}")
+    = render 'info_header', tournament: decorate(tournament)
   = render active_tab
