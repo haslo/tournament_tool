@@ -11,7 +11,7 @@
         %th= Tournament.human_attribute_name(:tournament_start)
         %th
     %tbody
-      - decorate_list(tournaments).each do |tournament|
+      - tournaments.each do |tournament|
         %tr
           %td= tournament.title
           %td= tournament.description

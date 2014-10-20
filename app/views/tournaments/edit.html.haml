@@ -12,5 +12,5 @@
 .container
   .info-header
     %h2= t(".tabs.#{active_tab}")
-    = render 'info_header', tournament: decorate(tournament)
+    = render 'info_header', tournament: tournament
   = render active_tab

@@ -2,7 +2,7 @@ class LeaguesController < ApplicationController
 
   before_action :authenticate_account!
 
-  expose(:leagues) { decorate_list(current_account.leagues) }
+  expose(:leagues) { current_account.leagues }
   expose(:league)
 
   # TODO all actions :P

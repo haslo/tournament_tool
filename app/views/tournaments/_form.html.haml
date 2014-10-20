@@ -5,7 +5,7 @@
       - if tournament.new_record?
         = f.select :type, [[t('.types.netrunner'), Android::NetrunnerTournament.name]], {}, {class: 'form-control'}
       - else
-        = text_field_tag :dummy_type, decorate(tournament).tournament_type, class: 'form-control', disabled: true
+        = text_field_tag :dummy_type, tournament.tournament_type, class: 'form-control', disabled: true
     .form-group
       = f.label :title, class: 'required'
       = f.text_field :title, class: 'form-control', placeholder: Tournament.human_attribute_name(:title)
