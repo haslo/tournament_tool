@@ -1,0 +1,6 @@
+en:
+  stages:
+    new:
+      create_stage: 'Create stage'
+    edit:
+      update_stage: 'Update stage'

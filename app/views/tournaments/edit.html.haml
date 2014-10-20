@@ -10,7 +10,4 @@
   %h1= t('.title', tournament: tournament.title)
 
 .container
-  .info-header
-    %h2= t(".tabs.#{active_tab}")
-    = render 'info_header', tournament: tournament
   = render active_tab

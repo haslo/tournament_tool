@@ -38,5 +38,6 @@ en:
         schedule: 'Schedule'
         register: 'Register'
         run: 'Run'
+        info: 'Info'
         timeline: 'Timeline'
         standings: 'Standings'

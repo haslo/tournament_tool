@@ -21,6 +21,7 @@ class TournamentsController < ApplicationController
       %w[schedule calendar],
       %w[register list],
       %w[run play],
+      %w[info qrcode],
       %w[timeline time],
       %w[standings tasks]
     ]

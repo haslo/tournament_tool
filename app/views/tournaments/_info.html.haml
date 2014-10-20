@@ -1,1 +1,18 @@
-= render 'info_header', tournament: shown_tournament
+- tournament ||= shown_tournament
+.row
+  .col-md-9
+    %table.table.table-striped
+      %tbody
+        %tr
+          %th= Tournament.human_attribute_name :title
+          %td= tournament.title
+        %tr
+          %th= Tournament.human_attribute_name :type
+          %td= tournament.tournament_type
+        - if tournament.signup_url.present?
+          %tr
+            %th= Tournament.human_attribute_name :signup_url
+            %td= link_to tournament.signup_url, tournament.signup_url
+  .col-md-3
+    .display-qr-code
+      = render '/shared_partials/qr_code', qr_code: (shown_tournament || tournament).show_qr_code
