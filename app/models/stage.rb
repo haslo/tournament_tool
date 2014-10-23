@@ -1,9 +1,11 @@
 class Stage < ActiveRecord::Base
 
+  include Concerns::ModelWithJSONData
+
   belongs_to :tournament
   has_many :rounds
 
-  validates :tournament_id, :type, presence: true
+  validates :tournament_id, :type, :title, presence: true
 
   def type_name
     self.class.type_name

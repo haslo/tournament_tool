@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014133835) do
+ActiveRecord::Schema.define(version: 20141023211820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20141014133835) do
     t.string   "title"
     t.text     "description"
     t.string   "league_url"
-    t.json     "league_data"
+    t.json     "json_data"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -57,9 +57,7 @@ ActiveRecord::Schema.define(version: 20141014133835) do
     t.integer  "participant_1_id"
     t.integer  "participant_2_id"
     t.string   "result"
-    t.json     "participant_1_data"
-    t.json     "participant_2_data"
-    t.json     "pairing_data"
+    t.json     "json_data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,7 +73,7 @@ ActiveRecord::Schema.define(version: 20141014133835) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.json     "participant_data"
+    t.json     "json_data"
   end
 
   add_index "participants", ["tournament_id"], name: "index_participants_on_tournament_id", using: :btree
@@ -86,7 +84,7 @@ ActiveRecord::Schema.define(version: 20141014133835) do
     t.datetime "round_end_override"
     t.boolean  "has_started",          default: false, null: false
     t.boolean  "has_ended",            default: false, null: false
-    t.json     "round_data"
+    t.json     "json_data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -101,9 +99,10 @@ ActiveRecord::Schema.define(version: 20141014133835) do
     t.integer  "number_of_rounds"
     t.integer  "minutes_per_round"
     t.string   "type"
-    t.json     "stage_data"
+    t.json     "json_data"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
   end
 
   add_index "stages", ["tournament_id"], name: "index_stages_on_tournament_id", using: :btree
@@ -120,7 +119,7 @@ ActiveRecord::Schema.define(version: 20141014133835) do
     t.datetime "updated_at"
     t.integer  "account_id"
     t.datetime "doors_open_time"
-    t.json     "tournament_data"
+    t.json     "json_data"
     t.string   "type"
   end
 
