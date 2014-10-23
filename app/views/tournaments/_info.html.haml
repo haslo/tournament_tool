@@ -7,7 +7,7 @@
           %td= tournament.title
         %tr
           %th= Tournament.human_attribute_name :type
-          %td= tournament.tournament_type
+          %td= tournament.type_name
         - if tournament.signup_url.present?
           %tr
             %th= Tournament.human_attribute_name :signup_url

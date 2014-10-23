@@ -4,12 +4,9 @@
     .form-group
       = f.label :type, class: 'required'
       - if stage.new_record?
-        = f.select :type, select_options_from_types(stage.tournament.stage_types, 'stages'), {}, {class: 'form-control'}
+        = f.select :type, select_options_from_types(stage.tournament.stage_types), {}, {class: 'form-control'}
       - else
-        = text_field_tag :dummy_type, stage.stage_type, class: 'form-control', disabled: true
-    .form-group
-      = f.label :number_of_rounds, class: 'required'
-      = f.text_field :number_of_rounds, class: 'form-control', placeholder: Stage.human_attribute_name(:number_of_rounds)
+        = text_field_tag :dummy_type, stage.type_name, class: 'form-control', disabled: true
     .form-group
       = f.label :minutes_per_round
       = f.text_field :minutes_per_round, class: 'form-control', placeholder: Stage.human_attribute_name(:minutes_per_round), type: 'url'

@@ -14,7 +14,7 @@
         %tr
           %td= league.title
           %td= league.description
-          %td= league.tournament_type
+          %td= league.type_name
           %td.text-right
             = link_to t('.league_links.show'), league_path(id: league.show_key), class: 'btn btn-primary'
             = link_to t('.league_links.admin'), edit_league_path(league), class: 'btn btn-primary'

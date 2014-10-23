@@ -1,7 +1,7 @@
 module Android
   class NetrunnerTournament < ::Tournament
 
-    def type_key
+    def self.type_key
       :netrunner
     end
 

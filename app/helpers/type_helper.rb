@@ -1,8 +1,8 @@
 module TypeHelper
 
-  def select_options_from_types(types, i18n_key)
+  def select_options_from_types(types)
     types.map do |type|
-      [t("types.#{i18n_key}.#{type.type_key}"), type.name]
+      [type.type_name, type.name]
     end
   end
 

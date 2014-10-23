@@ -15,8 +15,12 @@ class Tournament < ActiveRecord::Base
     ]
   end
 
-  def tournament_type
-    I18n.t("types.tournaments.#{tournament_key}")
+  def type_name
+    self.class.type_name
+  end
+
+  def self.type_name
+    I18n.t("types.tournaments.#{type_key}")
   end
 
   def show_qr_code

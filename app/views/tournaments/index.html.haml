@@ -15,7 +15,7 @@
         %tr
           %td= tournament.title
           %td= tournament.description
-          %td= tournament.tournament_type
+          %td= tournament.type_name
           %td= tournament.tournament_start.present? ? l(tournament.tournament_start, format: :short) : ''
           %td.text-right
             = link_to t('.tournament_links.show'), tournament_path(id: tournament.show_key), class: 'btn btn-primary'
