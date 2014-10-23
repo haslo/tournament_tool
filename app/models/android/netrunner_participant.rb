@@ -6,7 +6,7 @@ module Android
         :runner,
         :runner_faction,
         :corporation,
-        :corporation_faction,
+        :corporation_faction
       ]
     end
 
