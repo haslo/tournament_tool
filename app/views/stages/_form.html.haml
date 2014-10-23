@@ -1,2 +1,25 @@
 = f.hidden_field :tournament_id
-form
+.row
+  .col-md-7
+    .form-group
+      = f.label :type, class: 'required'
+      - if stage.new_record?
+        = f.select :type, select_options_from_types(stage.tournament.stage_types, 'stages'), {}, {class: 'form-control'}
+      - else
+        = text_field_tag :dummy_type, stage.stage_type, class: 'form-control', disabled: true
+    .form-group
+      = f.label :number_of_rounds, class: 'required'
+      = f.text_field :number_of_rounds, class: 'form-control', placeholder: Stage.human_attribute_name(:number_of_rounds)
+    .form-group
+      = f.label :minutes_per_round
+      = f.text_field :minutes_per_round, class: 'form-control', placeholder: Stage.human_attribute_name(:minutes_per_round), type: 'url'
+  .col-md-5
+    .form-group
+      = f.label :doors_open_time
+      = f.text_field :doors_open_time, class: 'form-control', placeholder: Stage.human_attribute_name(:doors_open_time), type: 'datetime-local'
+    .form-group
+      = f.label :stage_start
+      = f.text_field :stage_start, class: 'form-control', placeholder: Stage.human_attribute_name(:stage_start), type: 'datetime-local'
+    .form-group
+      = f.label :stage_end
+      = f.text_field :stage_end, class: 'form-control', placeholder: Stage.human_attribute_name(:stage_end), type: 'datetime-local'

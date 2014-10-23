@@ -3,7 +3,7 @@
     .form-group
       = f.label :type, class: 'required'
       - if tournament.new_record?
-        = f.select :type, [[t('.types.netrunner'), Android::NetrunnerTournament.name]], {}, {class: 'form-control'}
+        = f.select :type, select_options_from_types(Tournament.tournament_types), {}, {class: 'form-control'}
       - else
         = text_field_tag :dummy_type, tournament.tournament_type, class: 'form-control', disabled: true
     .form-group

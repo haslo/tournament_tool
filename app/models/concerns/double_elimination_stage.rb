@@ -3,5 +3,11 @@ module Concerns
 
     extend ActiveSupport::Concern
 
+    module ClassMethods
+      def type_key
+        :double_elimination
+      end
+    end
+
   end
 end

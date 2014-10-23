@@ -1,8 +1,8 @@
 module Android
   class NetrunnerTournament < ::Tournament
 
-    def tournament_type
-      'Android:Netrunner'
+    def type_key
+      :netrunner
     end
 
     def stage_types

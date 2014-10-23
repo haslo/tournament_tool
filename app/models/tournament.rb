@@ -6,8 +6,18 @@ class Tournament < ActiveRecord::Base
   belongs_to :league
   has_many :stages
 
-  validates :title, :account_id, presence: true
+  validates :title, :account_id, :type, presence: true
   before_create :create_show_key
+
+  def self.tournament_types
+    [
+      Android::NetrunnerTournament
+    ]
+  end
+
+  def tournament_type
+    I18n.t("types.tournaments.#{tournament_key}")
+  end
 
   def show_qr_code
     RQRCode::QRCode.new(Rails.application.routes.url_helpers.tournament_url(id: show_key))
