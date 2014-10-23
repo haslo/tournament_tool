@@ -1,0 +1,12 @@
+%h2= stage.title
+%table.table.table-striped.table-bordered
+  %tbody
+    %tr
+      %th= Stage.human_attribute_name :type
+      %td= stage.type_name
+    %tr
+      %th= Stage.human_attribute_name :number_of_rounds
+      %td= stage.number_of_rounds
+    %tr
+      %th= Stage.human_attribute_name :number_of_participants
+      %td= stage.tournament.participants.count

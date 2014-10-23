@@ -45,6 +45,7 @@ class StagesController < ApplicationController
   def stage_attributes
     params.require(:stage).permit(:type,
                                   :tournament_id,
+                                  :title,
                                   :number_of_rounds,
                                   :minutes_per_round,
                                   :doors_open_time,

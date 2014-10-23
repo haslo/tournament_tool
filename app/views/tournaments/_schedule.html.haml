@@ -1,23 +1,23 @@
 - if tournament.stages.any?
   - tournament.stages.each_with_index do |stage, index|
     .row.stage-row{class: index == 0 ? 'top-buffer' : ''}
-      .col-md-7
+      .col-md-9
         .stage-display
-          %p= 'stage'
-      .col-md-5
+          = render '/stages/show', stage: stage
+      .col-md-3
         = link_to t('.edit_stage'), edit_stage_path(stage), class: 'btn btn-block btn-primary', :type => 'button'
         = link_to t('.destroy_stage'), stage_path(stage), class: 'btn btn-block btn-danger',
                                                            type: 'button',
                                                            method: :delete,
                                                            data: {confirm: t('.confirm_destroy')}
   .row
-    .col-md-7
+    .col-md-9
       &nbsp;
-    .col-md-5
+    .col-md-3
       %a.btn.btn-block.btn-success{:type => 'button', href: new_stage_path(tournament_id: tournament.id)}= t('.create_stage')
 - else
   .row.top-buffer
-    .col-md-7
+    .col-md-9
       %p= t('.no_stages')
-    .col-md-5
+    .col-md-3
       %a.btn.btn-block.btn-success{:type => 'button', href: new_stage_path(tournament_id: tournament.id)}= t('.create_stage')

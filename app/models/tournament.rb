@@ -5,6 +5,7 @@ class Tournament < ActiveRecord::Base
   belongs_to :account
   belongs_to :league
   has_many :stages
+  has_many :participants
 
   validates :title, :account_id, :type, presence: true
   before_create :create_show_key
