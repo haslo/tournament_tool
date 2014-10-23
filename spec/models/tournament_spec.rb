@@ -1,5 +1,3 @@
-require_relative '../rails_helper'
-
 describe Tournament do
   subject { FactoryGirl.build(:tournament) }
 

@@ -3,6 +3,6 @@ class Participant < ActiveRecord::Base
   include Concerns::ModelWithJSONData
 
   belongs_to :tournament
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :tournament_id, :type, presence: true
 
 end

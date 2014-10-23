@@ -1,5 +1,3 @@
-require_relative '../rails_helper'
-
 describe TournamentsController do
 
   include Devise::TestHelpers
@@ -9,7 +7,7 @@ describe TournamentsController do
   describe 'GET show' do
     it 'loads the correct tournament with show_key' do
       get(:show, id: tournament.show_key)
-      expect(controller.shown_tournament).to eq(tournament)
+      expect(controller.shown_tournament.id).to eq(tournament.id)
     end
 
     it 'redirects to index with bogus value' do
