@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023223934) do
+ActiveRecord::Schema.define(version: 20141026190746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,8 +88,10 @@ ActiveRecord::Schema.define(version: 20141023223934) do
     t.json     "json_data"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
+  add_index "rounds", ["position"], name: "index_rounds_on_position", using: :btree
   add_index "rounds", ["stage_id"], name: "index_rounds_on_stage_id", using: :btree
 
   create_table "stages", force: true do |t|
@@ -104,8 +106,10 @@ ActiveRecord::Schema.define(version: 20141023223934) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
+    t.integer  "position"
   end
 
+  add_index "stages", ["position"], name: "index_stages_on_position", using: :btree
   add_index "stages", ["tournament_id"], name: "index_stages_on_tournament_id", using: :btree
 
   create_table "tournaments", force: true do |t|
@@ -122,8 +126,12 @@ ActiveRecord::Schema.define(version: 20141023223934) do
     t.datetime "doors_open_time"
     t.json     "json_data"
     t.string   "type"
+    t.integer  "position"
+    t.integer  "league_id"
   end
 
   add_index "tournaments", ["account_id"], name: "index_tournaments_on_account_id", using: :btree
+  add_index "tournaments", ["league_id"], name: "index_tournaments_on_league_id", using: :btree
+  add_index "tournaments", ["position"], name: "index_tournaments_on_position", using: :btree
 
 end

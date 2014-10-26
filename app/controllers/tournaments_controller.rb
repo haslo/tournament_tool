@@ -3,6 +3,7 @@ class TournamentsController < ApplicationController
   respond_to :html, :xml, :json
 
   before_action :authenticate_account!, except: [:show]
+  before_filter :needs_show_key, only: [:show]
 
   expose(:tournaments) { current_account.tournaments.order(tournament_start: :desc, id: :desc) }
   expose(:tournament, attributes: :tournament_attributes)
@@ -48,8 +49,6 @@ class TournamentsController < ApplicationController
     end
   end
 
-  before_filter :needs_show_key, only: [:show]
-
   def index
   end
 
@@ -80,6 +79,12 @@ class TournamentsController < ApplicationController
       respond_with tournament
     end
   end
+
+  def sort
+    params[:stage].each_with_index do |id, index|
+      tournaments.find(params[:id]).stages.find(id).update_attribute(:position, index + 1)
+    end
+    render nothing: true  end
 
   def destroy
     tournament.destroy

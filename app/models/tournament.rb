@@ -2,10 +2,14 @@ require 'rqrcode'
 
 class Tournament < ActiveRecord::Base
 
+  include Concerns::ModelWithJSONData
+
   belongs_to :account
   belongs_to :league
-  has_many :stages
+  has_many :stages, -> { order(:position) }
   has_many :participants
+
+  acts_as_list scope: :league
 
   validates :title, :account_id, :type, presence: true
   before_create :create_show_key

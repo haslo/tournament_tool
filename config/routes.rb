@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   resources :stages
 
   # must be last, as it's kind of a catch-all
-  resources :tournaments, path: '/', except: [:index]
+  resources :tournaments, path: '/', except: [:index] do
+    member do
+      post :sort
+    end
+  end
 
 end

@@ -1,22 +1,23 @@
 - if tournament.stages.any?
-  - tournament.stages.each_with_index do |stage, index|
-    .row.stage-row{class: index == 0 ? 'top-buffer' : ''}
-      .col-md-9
-        .stage-display
-          = render '/stages/show', stage: stage
-      .col-md-3
-        = link_to t('.edit_stage'), edit_stage_path(stage), class: 'btn btn-block btn-primary', :type => 'button'
-        = link_to t('.destroy_stage'), stage_path(stage), class: 'btn btn-block btn-danger',
-                                                           type: 'button',
-                                                           method: :delete,
-                                                           data: {confirm: t('.confirm_destroy')}
+  #stages{data: {update_url: sort_tournament_path(tournament)}}
+    - tournament.stages.each_with_index do |stage, index|
+      .row.stage-row{id: "stage_#{stage.id}"}
+        .col-md-9
+          .stage-display
+            = render '/stages/show', stage: stage
+        .col-md-3
+          = link_to t('.edit_stage'), edit_stage_path(stage), class: 'btn btn-block btn-primary', :type => 'button'
+          = link_to t('.destroy_stage'), stage_path(stage), class: 'btn btn-block btn-danger',
+                                                             type: 'button',
+                                                             method: :delete,
+                                                             data: {confirm: t('.confirm_destroy')}
   .row
     .col-md-9
       &nbsp;
     .col-md-3
       %a.btn.btn-block.btn-success{:type => 'button', href: new_stage_path(tournament_id: tournament.id)}= t('.create_stage')
 - else
-  .row.top-buffer
+  .row
     .col-md-9
       %p= t('.no_stages')
     .col-md-3

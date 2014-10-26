@@ -3,7 +3,9 @@ class Stage < ActiveRecord::Base
   include Concerns::ModelWithJSONData
 
   belongs_to :tournament
-  has_many :rounds
+  has_many :rounds, -> { order(:position) }
+
+  acts_as_list scope: :tournament
 
   validates :tournament_id, :type, :title, :number_of_rounds, presence: true
   before_validation :fill_number_of_rounds

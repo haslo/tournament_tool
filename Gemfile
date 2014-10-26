@@ -26,6 +26,7 @@ gem 'font-awesome-sass'
 gem 'devise'
 gem 'rqrcode-with-patches'
 gem 'gravtastic'
+gem 'acts_as_list'
 
 group :development do
   gem 'haml-rails'
