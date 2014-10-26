@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :accounts
-  if Rails.env.development?
+  if Rails.env.development? && defined?(Rails::Server)
     ip_candidates = `ifconfig |grep inet`.split("\n").map{|local_ip| local_ip.scan(/\d{1,3}/)[0..3].join('.')}
     local_ip = ip_candidates.select{|ip| ip =~ /\A192\.168\./}.first
     local_ip = ip_candidates.select{|ip| ip =~ /\A10\./}.first unless local_ip.present?
