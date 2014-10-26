@@ -23,6 +23,12 @@ en:
       destroy_stage: 'Delete this stage'
       confirm_destroy: 'Do you want to delete this stage? There is no going back...'
       edit_stage: 'View / Edit'
+    signup:
+      create_participant: 'Create'
+      update_participant: 'Update'
+      destroy_participant: 'Delete'
+      confirm_destroy: 'Do you want to delete this participant? There is no going back...'
+      default_stages: 'Create Default Stages'
     show:
       title: '%{tournament}'
       tabs:

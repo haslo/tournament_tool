@@ -1,5 +1,7 @@
 class LeaguesController < ApplicationController
 
+  respond_to :html, :xml, :json
+
   before_action :authenticate_account!
 
   expose(:leagues) { current_account.leagues }

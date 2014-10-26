@@ -84,7 +84,13 @@ class TournamentsController < ApplicationController
     params[:stage].each_with_index do |id, index|
       tournaments.find(params[:id]).stages.find(id).update_attribute(:position, index + 1)
     end
-    render nothing: true  end
+    render nothing: true
+  end
+
+  def default_stages
+    flash[:alert] = 'not implemented yet'
+    redirect_to action: :edit, tab: :schedule, id: params[:id]
+  end
 
   def destroy
     tournament.destroy

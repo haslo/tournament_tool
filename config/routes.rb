@@ -19,11 +19,13 @@ Rails.application.routes.draw do
   resource :about, only: [:show]
   resources :leagues
   resources :stages
+  resources :participants, only: [:create, :update, :destroy]
 
   # must be last, as it's kind of a catch-all
   resources :tournaments, path: '/', except: [:index] do
     member do
       post :sort
+      post :default_stages
     end
   end
 

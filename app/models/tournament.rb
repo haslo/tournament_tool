@@ -32,6 +32,10 @@ class Tournament < ActiveRecord::Base
     RQRCode::QRCode.new(Rails.application.routes.url_helpers.tournament_url(id: show_key))
   end
 
+  def default_stages_key_for(count)
+    nil
+  end
+
   private
 
   def create_show_key

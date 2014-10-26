@@ -4,12 +4,12 @@ class StagesController < ApplicationController
 
   before_action :authenticate_account!
 
+  expose(:tournaments) { current_account.tournaments }
   expose(:stages) { current_account.stages }
   expose(:stage, attributes: :stage_attributes)
 
   def new
-    user_tournament = Tournament.find(params[:tournament_id])
-    raise 'error' if user_tournament.account != current_account
+    user_tournament = tournaments.find(params[:tournament_id])
     stage.tournament = user_tournament
   end
 

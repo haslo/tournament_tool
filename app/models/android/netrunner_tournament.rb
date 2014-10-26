@@ -20,5 +20,18 @@ module Android
       ]
     end
 
+    def participant_type
+      Android::NetrunnerParticipant
+    end
+
+    def default_stages_key_for(count)
+      case count
+        when 2..10
+          'types.default_stages.netrunner.swiss'
+        else
+          nil
+      end
+    end
+
   end
 end

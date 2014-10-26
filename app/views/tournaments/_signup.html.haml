@@ -1,1 +1,35 @@
-signup
+- tournament.participants.each do |participant|
+  .row.participant-row
+    = form_for(participant, as: :participant, url: participant_path(participant)) do |f|
+      .col-md-1
+        = participant.position
+      .col-md-3
+        = f.text_field :first_name, class: 'form-control', placeholder: Participant.human_attribute_name(:first_name)
+      .col-md-3
+        = f.text_field :last_name, class: 'form-control', placeholder: Participant.human_attribute_name(:last_name)
+      .col-md-3
+        = f.text_field :email, class: 'form-control', placeholder: Participant.human_attribute_name(:email), type: 'email'
+      .col-md-2
+        %span.pull-right
+          = f.submit t('.update_participant'), class: 'btn btn-primary'
+          = link_to t('.destroy_participant'), participant_path(participant), method: :delete, class: 'btn btn-danger', data: {confirm: t('.confirm_destroy')}
+
+.row.participant-row
+  = form_for(tournament.participant_type.send(:new, tournament: tournament), as: :participant, url: participants_path) do |f|
+    = f.hidden_field :tournament_id
+    = f.hidden_field :type
+    .col-md-4
+      = f.text_field :first_name, class: 'form-control', placeholder: Participant.human_attribute_name(:first_name)
+    .col-md-3
+      = f.text_field :last_name, class: 'form-control', placeholder: Participant.human_attribute_name(:last_name)
+    .col-md-3
+      = f.text_field :email, class: 'form-control', placeholder: Participant.human_attribute_name(:email), type: 'email'
+    .col-md-2
+      %span.pull-right
+        = f.submit t('.create_participant'), class: 'btn btn-success'
+
+- if tournament.default_stages_key_for(tournament.participants.count).present?
+  .jumbotron.offset-top
+    %p= t(tournament.default_stages_key_for(tournament.participants.count))
+    - if tournament.stages.none?
+      %p= link_to t('.default_stages'), default_stages_tournament_path(tournament), class: 'btn btn-primary btn-block', method: :post

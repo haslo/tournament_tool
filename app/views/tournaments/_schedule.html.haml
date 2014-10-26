@@ -1,6 +1,6 @@
 - if tournament.stages.any?
   #stages{data: {update_url: sort_tournament_path(tournament)}}
-    - tournament.stages.each_with_index do |stage, index|
+    - tournament.stages.each do |stage|
       .row.stage-row{id: "stage_#{stage.id}"}
         .col-md-9
           .stage-display

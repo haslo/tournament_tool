@@ -7,3 +7,6 @@ en:
       elimination: 'Single Elimination (no second chances, players drop out after losing)'
       double_elimination: 'Double Elimination (second chances, two parallel elimination trees)'
       round_robin: 'Round Robin (each player vs. each other player, only suited for small numbers)'
+    default_stages:
+      netrunner:
+        swiss: 'Always use Swiss, it is awesome...'
