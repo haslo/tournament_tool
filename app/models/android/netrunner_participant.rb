@@ -1,12 +1,12 @@
 module Android
   class NetrunnerParticipant < ::Participant
 
-    def self.json_data_fields
+    def self.json_data_field_descriptions
       [
-        :runner,
-        :runner_faction,
-        :corporation,
-        :corporation_faction
+        {name: :runner, data_type: String},
+        {name: :runner_faction, data_type: String},
+        {name: :corporation, data_type: String},
+        {name: :corporation_faction, data_type: String}
       ]
     end
 
