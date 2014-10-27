@@ -3,10 +3,18 @@ en:
     tournaments:
       netrunner: 'Android:Netrunner'
     stages:
-      swiss: 'Swiss (fixed number of rounds, matchups according to strength)'
-      elimination: 'Single Elimination (no second chances, players drop out after losing)'
-      double_elimination: 'Double Elimination (second chances, two parallel elimination trees)'
-      round_robin: 'Round Robin (each player vs. each other player, only suited for small numbers)'
+      swiss:
+        name: 'Swiss'
+        description: 'fixed number of rounds, matchups according to strength'
+      elimination:
+        name: 'Single Elimination'
+        description: 'no second chances, players drop out after losing'
+      double_elimination:
+        name: 'Double Elimination'
+        description: 'second chances, two parallel elimination trees'
+      round_robin:
+        name: 'Round Robin'
+        description: 'each player vs. each other player, only suited for small numbers'
     default_stages:
       netrunner:
         swiss: 'Always use Swiss, it is awesome...'

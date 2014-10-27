@@ -36,6 +36,13 @@ class Tournament < ActiveRecord::Base
     nil
   end
 
+  def maximum_participants_at(position)
+    [
+      stages.select{|s| s.position <= position}.map(&:maximum_number_of_participants).reject(&:blank?).min,
+      participants.count
+    ].reject(&:blank?).min
+  end
+
   private
 
   def create_show_key

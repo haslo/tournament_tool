@@ -59,10 +59,20 @@ body {
       h2 {
         margin-top: 10px;
       }
+      th {
+        width: 30%;
+      }
+      td {
+        width: 70%;
+      }
     }
   }
   .participant-row {
     margin-bottom: 5px;
+    span.position {
+      line-height: 30px;
+      vertical-align: middle;
+    }
   }
 
   .page-header {

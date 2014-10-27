@@ -4,9 +4,18 @@
     %tr
       %th= Stage.human_attribute_name :type
       %td= stage.type_name
+    - if stage.respond_to?(:type_description)
+      %tr
+        %th= Stage.human_attribute_name :description
+        %td= stage.type_description
     %tr
       %th= Stage.human_attribute_name :number_of_rounds
       %td= stage.number_of_rounds
     %tr
       %th= Stage.human_attribute_name :number_of_participants
-      %td= stage.tournament.participants.count
+      %td
+        = stage.number_of_participants
+        - if stage.maximum_number_of_participants.present?
+          %small= t('.maximum_number', number: stage.maximum_number_of_participants)
+        - else
+          %small= t('.no_maximum')

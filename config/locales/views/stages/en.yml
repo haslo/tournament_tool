@@ -4,3 +4,6 @@ en:
       create_stage: 'Create stage'
     edit:
       update_stage: 'Update stage'
+    show:
+      maximum_number: ' (maximum: %{number})'
+      no_maximum: ' (no maximum)'

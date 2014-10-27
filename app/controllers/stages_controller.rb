@@ -47,6 +47,7 @@ class StagesController < ApplicationController
                                   :tournament_id,
                                   :title,
                                   :number_of_rounds,
+                                  :maximum_number_of_participants,
                                   :minutes_per_round,
                                   :doors_open_time,
                                   :stage_start_time,

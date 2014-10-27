@@ -3,7 +3,7 @@
     = form_for(participant, as: :participant, url: participant_path(participant)) do |f|
       = f.hidden_field :type
       .col-md-1
-        = participant.position
+        %span.position= participant.position
       .col-md-3
         = f.text_field :first_name, class: 'form-control', placeholder: Participant.human_attribute_name(:first_name)
       .col-md-3
@@ -19,7 +19,9 @@
   = form_for(tournament.participant_type.send(:new, tournament: tournament), as: :participant, url: participants_path) do |f|
     = f.hidden_field :tournament_id
     = f.hidden_field :type
-    .col-md-4
+    .col-md-1
+      %span.glyphicon.glyphicon-plus-sign.position
+    .col-md-3
       = f.text_field :first_name, class: 'form-control', placeholder: Participant.human_attribute_name(:first_name)
     .col-md-3
       = f.text_field :last_name, class: 'form-control', placeholder: Participant.human_attribute_name(:last_name)
