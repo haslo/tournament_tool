@@ -1,24 +1,37 @@
 - if tournament.stages.any?
   #stages{data: {update_url: sort_tournament_path(tournament)}}
     - tournament.stages.each do |stage|
-      .row.stage-row{id: "stage_#{stage.id}"}
-        .col-md-9
-          .stage-display
-            = render '/stages/show', stage: stage
-        .col-md-3
-          = link_to t('.edit_stage'), edit_stage_path(stage), class: 'btn btn-block btn-primary', :type => 'button'
-          = link_to t('.destroy_stage'), stage_path(stage), class: 'btn btn-block btn-danger',
-                                                             type: 'button',
-                                                             method: :delete,
-                                                             data: {confirm: t('.confirm_destroy')}
+      %div{id: "stage_#{stage.id}"}
+        = form_for stage, as: :stage, url: stage_path(stage) do |f|
+          .row.stage-row
+            .col-md-4
+              .stage-display
+                = render '/stages/show', stage: stage
+                = link_to t('.destroy_stage'), stage_path(stage), class: 'btn btn-block btn-danger',
+                                                                   type: 'button',
+                                                                   method: :delete,
+                                                                   data: {confirm: t('.confirm_destroy')}
+            .col-md-8
+              .row
+                .col-md-6
+                  = render '/stages/times_form', stage: stage, f: f
+                .col-md-6
+                  = render '/stages/form', stage: stage, f: f
+              .form-group
+                = f.submit t('.update_stage'), class: 'btn btn-large btn-block btn-primary'
   .row
-    .col-md-9
+    .col-md-4
       &nbsp;
-    .col-md-3
+    .col-md-4
+      &nbsp;
+    .col-md-4
       %a.btn.btn-block.btn-success{:type => 'button', href: new_stage_path(tournament_id: tournament.id)}= t('.create_stage')
 - else
   .row
-    .col-md-9
-      %p= t('.no_stages')
-    .col-md-3
+    .col-md-4
+      .stage-display
+        %p= t('.no_stages')
+    .col-md-4
+      &nbsp;
+    .col-md-4
       %a.btn.btn-block.btn-success{:type => 'button', href: new_stage_path(tournament_id: tournament.id)}= t('.create_stage')

@@ -1,21 +1,20 @@
 = f.hidden_field :tournament_id
-.row
-  .col-md-12
-    .form-group
-      = f.label :type, class: 'required'
-      - if stage.new_record?
-        = f.select :type, select_options_from_types(stage.tournament.stage_types), {}, {class: 'form-control'}
-      - else
-        = text_field_tag :dummy_type, "#{stage.type_name} (#{stage.type_description})", class: 'form-control', disabled: true
-    .form-group
-      = f.label :title, class: 'required'
-      = f.text_field :title, class: 'form-control', placeholder: Stage.human_attribute_name(:title)
-    .form-group
-      = f.label :number_of_rounds, class: 'required'
-      = f.text_field :number_of_rounds, class: 'form-control', placeholder: Stage.human_attribute_name(:number_of_rounds)
-    .form-group
-      = f.label :maximum_number_of_participants
-      = f.text_field :maximum_number_of_participants, class: 'form-control', placeholder: Stage.human_attribute_name(:maximum_number_of_participants)
-    .form-group
-      = f.label :minutes_per_round
-      = f.text_field :minutes_per_round, class: 'form-control', placeholder: Stage.human_attribute_name(:minutes_per_round)
+.form-group
+  = f.label :type, class: 'required'
+  - if stage.new_record?
+    = f.select :type, select_options_from_types(stage.tournament.stage_types), {}, {class: 'form-control'}
+  - else
+    = text_field_tag :dummy_type, "#{stage.type_name} (#{stage.type_description})", class: 'form-control', disabled: true
+.form-group
+  = f.label :title, class: 'required'
+  = f.text_field :title, class: 'form-control', placeholder: Stage.human_attribute_name(:title)
+.form-group
+  = f.label :number_of_rounds, class: 'required'
+  = f.text_field :number_of_rounds, class: 'form-control', placeholder: Stage.human_attribute_name(:number_of_rounds)
+.form-group
+  = f.label :maximum_number_of_participants
+  = f.text_field :maximum_number_of_participants, class: 'form-control', placeholder: Stage.human_attribute_name(:maximum_number_of_participants)
+- if stage.new_record?
+  .form-group
+    = f.label :minutes_per_round
+    = f.text_field :minutes_per_round, class: 'form-control', placeholder: Stage.human_attribute_name(:minutes_per_round)

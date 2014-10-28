@@ -11,6 +11,7 @@ class StagesController < ApplicationController
   def new
     user_tournament = tournaments.find(params[:tournament_id])
     stage.tournament = user_tournament
+    stage.minutes_per_round = user_tournament.default_minutes_per_round
   end
 
   def create
@@ -49,9 +50,9 @@ class StagesController < ApplicationController
                                   :number_of_rounds,
                                   :maximum_number_of_participants,
                                   :minutes_per_round,
-                                  :doors_open_time,
-                                  :stage_start_time,
-                                  :stage_end_time)
+                                  :minutes_per_break,
+                                  :stage_start,
+                                  :stage_end)
   end
 
 end

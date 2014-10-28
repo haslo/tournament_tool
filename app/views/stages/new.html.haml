@@ -1,4 +1,6 @@
 = form_for stage do |f|
+  .row
+    .col-md-12
   = render 'form', f: f
   .form-group
     = f.submit t('.create_stage'), class: 'btn btn-large btn-block btn-success'

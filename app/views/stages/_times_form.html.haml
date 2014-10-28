@@ -1,0 +1,12 @@
+.form-group
+  = f.label :stage_start
+  = f.datetime_local_field :stage_start, class: 'form-control', placeholder: Tournament.human_attribute_name(:stage_start)
+.form-group
+  = f.label :minutes_per_round
+  = f.text_field :minutes_per_round, class: 'form-control', placeholder: Stage.human_attribute_name(:minutes_per_round)
+.form-group
+  = f.label :minutes_per_break
+  = f.text_field :minutes_per_break, class: 'form-control', placeholder: Stage.human_attribute_name(:minutes_per_break)
+.form-group
+  = f.label :stage_end
+  = f.text_field :stage_end, class: 'form-control', placeholder: Stage.human_attribute_name(:stage_end), disabled: true

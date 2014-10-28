@@ -11,7 +11,7 @@ class Tournament < ActiveRecord::Base
 
   acts_as_list scope: :league
 
-  validates :title, :account_id, :type, presence: true
+  validates :title, :account_id, :type, :tournament_start, presence: true
   before_create :create_show_key
 
   def self.tournament_types
@@ -34,6 +34,14 @@ class Tournament < ActiveRecord::Base
 
   def default_stages_key_for(count)
     nil
+  end
+
+  def default_minutes_per_break
+    10 # TODO override
+  end
+
+  def default_minutes_per_round
+    60 # TODO override
   end
 
   def maximum_participants_at(position)
