@@ -2,7 +2,7 @@
   %h1= t('.title')
 
 - if tournaments.any?
-  %table.table.table-striped
+  %table.table.table-striped#tournaments-table
     %thead
       %tr
         %th= Tournament.human_attribute_name(:title)
