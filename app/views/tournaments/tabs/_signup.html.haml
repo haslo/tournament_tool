@@ -1,6 +1,6 @@
 - tournament.participants.each do |participant|
   .row.participant-row
-    = form_for(participant, as: :participant, url: participant_path(participant)) do |f|
+    = form_for(participant, as: :participant, url: participant_path(participant), namespace: participant.id) do |f|
       = f.hidden_field :type
       .col-md-1
         %span.position= participant.position
