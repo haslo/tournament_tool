@@ -31,7 +31,7 @@
       %span.pull-right
         = f.submit t('.create_participant'), class: 'btn btn-success'
 
-- if tournament.stages.none? && tournament.default_stages_key_for(tournament.participants.count).present?
+- if tournament.stages.none? && tournament.default_stages_key.present?
   .jumbotron.offset-top
-    %p= t(tournament.default_stages_key_for(tournament.participants.count))
+    %p= t(tournament.default_stages_key, number: tournament.participants.count)
     %p= link_to t('.default_stages'), default_stages_tournament_path(tournament), class: 'btn btn-primary btn-block', method: :post

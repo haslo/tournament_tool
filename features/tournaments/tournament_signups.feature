@@ -84,3 +84,4 @@ Feature: Setup Tournament for Registration
     And I click "Create Default Stages"
     Then I should see "Default Stages created"
     And the "Schedule" tab should be active
+    And there should be at least one stage

@@ -27,3 +27,8 @@ Then(/^I should see the following participants:$/) do |participants|
     expect(signup_tab.participant_info(index)).to eq(participant)
   end
 end
+
+Then(/^there should be at least one stage$/) do
+  schedule_tab = ScheduleTab.new(self)
+  expect(schedule_tab.number_of_stages).to be >= 1
+end

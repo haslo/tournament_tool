@@ -2,7 +2,7 @@
   #stages{data: {update_url: sort_tournament_path(tournament)}}
     - tournament.stages.each do |stage|
       %div{id: "stage_#{stage.id}"}
-        = form_for stage, as: :stage, url: stage_path(stage) do |f|
+        = form_for(stage, as: :stage, url: stage_path(stage), namespace: stage.id) do |f|
           .row.stage-row
             .col-md-4
               .stage-display

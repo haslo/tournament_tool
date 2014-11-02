@@ -38,8 +38,12 @@ class Tournament < ActiveRecord::Base
     RQRCode::QRCode.new(path)
   end
 
-  def default_stages_key_for(count)
+  def default_stages_key
     nil
+  end
+
+  def create_default_stages
+    # TODO override
   end
 
   def default_minutes_per_break

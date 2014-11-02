@@ -85,8 +85,11 @@ class TournamentsController < ApplicationController
   end
 
   def default_stages
-    flash[:notice] = t('messages.default_stages_created')
-    # TODO
+    if Tournament.find(params[:id]).create_default_stages # TODO authorization
+      flash[:notice] = t('messages.default_stages_created')
+    else
+      flash[:alert] = t('messages.could_not_create_default_stages')
+    end
     redirect_to action: :edit, tab: :schedule, id: params[:id]
   end
 
