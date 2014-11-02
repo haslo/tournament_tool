@@ -41,6 +41,7 @@ group :development, :test do
   gem 'cucumber-rails', require: false
   gem 'capybara'
   gem 'simplecov'
+  gem 'brakeman'
 end
 
 group :test do

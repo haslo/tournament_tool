@@ -9,12 +9,6 @@ class TournamentsController < ApplicationController
   expose(:tournament, attributes: :tournament_attributes)
   expose(:shown_tournament) { Tournament.find_by(show_key: params[:id]) }
 
-  expose(:new_tabs) {
-    [
-      %w[basic edit],
-      %w[advanced check]
-    ]
-  }
   expose(:edit_tabs) {
     [
       %w[update home],
@@ -30,22 +24,25 @@ class TournamentsController < ApplicationController
   expose(:show_tabs) {
     [
       %w[info qrcode],
-      %w[results eye-open],
+      %w[guide eye-open],
       %w[timeline time],
       %w[standings tasks]
     ]
   }
   expose(:active_tab) do
+    active_tab = nil
     if params[:tab].present?
-      params[:tab]
-    else
+      tabs = __send__("#{params[:action]}_tabs").map{|t|t[0]}
+      active_tab = params[:tab] if tabs.include?(params[:tab])
+    end
+    if active_tab.nil?
       if Tournament.find_by(id: params[:id]).present?
         tournament.valid? ? 'signup' : 'update'
       elsif shown_tournament.present?
         'info'
-      else
-        'basic'
       end
+    else
+      active_tab
     end
   end
 

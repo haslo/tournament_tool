@@ -61,6 +61,6 @@ Feature: Create Tournament
     And I should see the following tabs:
       | name      | active |
       | Info      | X      |
-      | Results   |        |
+      | Guide     |        |
       | Timeline  |        |
       | Standings |        |

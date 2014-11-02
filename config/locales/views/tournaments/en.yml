@@ -34,7 +34,7 @@ en:
       title: '%{tournament}'
       tabs:
         info: 'Info'
-        results: 'Results'
+        guide: 'Guide'
         timeline: 'Timeline'
         standings: 'Standings'
     edit:
