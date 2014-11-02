@@ -81,12 +81,13 @@ class TournamentsController < ApplicationController
   def sort
     params[:stage].each_with_index do |id, index|
       tournaments.find(params[:id]).stages.find(id).update_attribute(:position, index + 1)
+      tournaments.find(params[:id]).update_stage_times
     end
     render nothing: true
   end
 
   def default_stages
-    if Tournament.find(params[:id]).create_default_stages # TODO authorization
+    if tournaments.find(params[:id]).create_default_stages
       flash[:notice] = t('messages.default_stages_created')
     else
       flash[:alert] = t('messages.could_not_create_default_stages')
