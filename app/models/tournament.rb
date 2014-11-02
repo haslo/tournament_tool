@@ -61,6 +61,13 @@ class Tournament < ActiveRecord::Base
     ].reject(&:blank?).min
   end
 
+  def update_stage_times
+    stages.order(:position).each do |stage|
+      stage.update_times
+      stage.save
+    end
+  end
+
   private
 
   def create_show_key

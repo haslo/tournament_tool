@@ -12,10 +12,12 @@ class StagesController < ApplicationController
     user_tournament = tournaments.find(params[:tournament_id])
     stage.tournament = user_tournament
     stage.minutes_per_round = user_tournament.default_minutes_per_round
+    stage.minutes_per_break = user_tournament.default_minutes_per_break
   end
 
   def create
     if stage.save
+      stage.tournament.update_stage_times
       flash[:notice] = I18n.t('messages.created', model: Stage.model_name)
       redirect_to controller: :tournaments, action: :edit, id: stage.tournament.id, tab: 'schedule'
     else
@@ -28,6 +30,7 @@ class StagesController < ApplicationController
 
   def update
     if stage.save
+      stage.tournament.update_stage_times
       flash[:notice] = I18n.t('messages.updated', model: Stage.model_name)
       redirect_to controller: :tournaments, action: :edit, id: stage.tournament.id, tab: 'schedule'
     else
@@ -36,7 +39,9 @@ class StagesController < ApplicationController
   end
 
   def destroy
+    tournament = stage.tournament
     stage.destroy
+    update_stage_times(tournament)
     flash[:alert] = I18n.t('messages.destroyed', model: Stage.model_name)
     redirect_to controller: :tournaments, action: :edit, id: stage.tournament.id, tab: 'schedule'
   end

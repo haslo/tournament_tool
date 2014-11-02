@@ -1,4 +1,4 @@
-Given(/^the following (.*) models:$/) do |model_name, table|
+Given(/^the following (.*) models?:$/) do |model_name, table|
   table.hashes.each do |model_hash|
     FactoryGirl.create(model_name.singularize.downcase.to_sym, model_hash)
   end

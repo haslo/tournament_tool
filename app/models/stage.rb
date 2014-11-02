@@ -45,16 +45,16 @@ class Stage < ActiveRecord::Base
 
   def update_times
     unless self.number_of_rounds.blank? || self.minutes_per_round.blank?
-      if self.stage_start.blank?
-        if self.tournament.stages.count < 1
-          self.stage_start = tournament.tournament_start
-        else
-          last_stage = tournament.stages.where(position: self.tournament.stages.count).first
-          self.stage_start = last_stage.stage_end + (last_stage.minutes_per_break.minutes || DEFAULT_BREAK)
-        end
+      if self.position.blank? || self.position == 1
+        self.stage_start = tournament.tournament_start
+      else
+        last_stage = tournament.stages.where(position: self.position - 1).first
+        self.stage_start = last_stage.stage_end + (last_stage.minutes_per_break.minutes || self.tournament.default_minutes_per_break)
       end
       self.minutes_per_break ||= self.tournament.default_minutes_per_break
-      self.stage_end = self.stage_start + (self.number_of_rounds * self.minutes_per_round.minutes) + ((self.number_of_rounds - 1) * self.minutes_per_break.minutes)
+      rounds_time = self.number_of_rounds * self.minutes_per_round.minutes
+      breaks_time = (self.number_of_rounds - 1) * self.minutes_per_break.minutes
+      self.stage_end = self.stage_start + rounds_time + breaks_time
     end
   end
 

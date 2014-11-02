@@ -70,6 +70,7 @@ class TournamentsController < ApplicationController
 
   def update
     if tournament.save
+      tournament.update_stage_times
       flash[:notice] = I18n.t('messages.updated', model: Tournament.model_name)
       redirect_to action: :edit, tab: :signup, id: tournament
     else
