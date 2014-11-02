@@ -45,6 +45,22 @@ Feature: Create Tournament
     And I visit the navbar item "Tournaments"
     And I click the 1st tournament's "Admin" link
     Then I should see "Admin: Awesome Tournament"
+    And I should see the following tabs:
+      | name      | active |
+      | Update    |        |
+      | Signup    | X      |
+      | Schedule  |        |
+      | Register  |        |
+      | Run       |        |
+      | Info      |        |
+      | Timeline  |        |
+      | Standings |        |
     When I visit the navbar item "Tournaments"
     And I click the 1st tournament's "Show" link
-    Then I should see "Admin: Awesome Tournament"
+    Then I should see "Awesome Tournament"
+    And I should see the following tabs:
+      | name      | active |
+      | Info      | X      |
+      | Results   |        |
+      | Timeline  |        |
+      | Standings |        |

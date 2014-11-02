@@ -29,7 +29,13 @@ class Tournament < ActiveRecord::Base
   end
 
   def show_qr_code
-    RQRCode::QRCode.new(Rails.application.routes.url_helpers.tournament_url(id: show_key))
+    path = if Rails.env.test?
+             'http://haslo.ch'
+           else
+             Rails.application.routes.url_helpers.tournament_url(id: show_key)
+           end
+
+    RQRCode::QRCode.new(path)
   end
 
   def default_stages_key_for(count)

@@ -3,14 +3,11 @@ require_relative 'page_object'
 class Navbar < ::PageObject
 
   def visit_navigation_item(navbar_item)
-    menu_item = find('ul.navbar-nav li', text: navbar_item)
-    puts menu_item.inspect
-    menu_item.click
+    find('ul.navbar-nav li', text: navbar_item).find('a').click
   end
 
   def expect_navigation_item(navbar_item)
-    menu_item = find('ul.navbar-nav li', text: navbar_item)
-    expect(menu_item[:class]).to include('active')
+    expect(find('ul.navbar-nav li.active', text: navbar_item)).to be_present
   end
 
 end
