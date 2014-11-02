@@ -85,7 +85,8 @@ class TournamentsController < ApplicationController
   end
 
   def default_stages
-    flash[:alert] = 'not implemented yet'
+    flash[:notice] = t('messages.default_stages_created')
+    # TODO
     redirect_to action: :edit, tab: :schedule, id: params[:id]
   end
 

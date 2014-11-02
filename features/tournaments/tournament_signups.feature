@@ -61,3 +61,26 @@ Feature: Setup Tournament for Registration
     And I should see the following participants:
       | first_name | last_name | email |
       | Fritz      | Müller    | fritz@mueller.ch |
+
+  Scenario: See and use auto stage creation
+    Given the following Tournament models:
+      | title              | tournament_start |
+      | Awesome Tournament | 2014-01-05 08:00 |
+    And I am a new, authenticated user
+    And all your Tournament are belong to me
+    When I visit the navbar item "Tournaments"
+    And I click the 1st tournament's "Admin" link
+    And I visit the tabs item "Signup"
+    And I sign up for the following participant:
+      | first_name | last_name | email            |
+      | Peter      | Meier     | peter@meier.ch   |
+    Then I should not see "Create Default Stages"
+    When I sign up for the following participants:
+      | first_name | last_name | email            |
+      | Peter      | Meier     | peter@meier.ch   |
+      | Peter      | Meier     | peter@meier.ch   |
+      | Peter      | Meier     | peter@meier.ch   |
+      | Peter      | Meier     | peter@meier.ch   |
+    And I click "Create Default Stages"
+    Then I should see "Default Stages created"
+    And the "Schedule" tab should be active

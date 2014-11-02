@@ -3,3 +3,4 @@ en:
     created: 'New %{model} created'
     updated: '%{model} updated'
     destroyed: '%{model} destroyed'
+    default_stages_created: 'Default Stages created'
