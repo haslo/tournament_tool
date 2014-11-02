@@ -9,7 +9,7 @@ Given /^I am not authenticated$/ do
 end
 
 Given /^I am a new, authenticated user$/ do
-  email = 'testing@man.net'
+  email = 'logged@in.net'
   password = 'secretpass'
   Account.new(email: email, password: password, password_confirmation: password, confirmed_at: Time.zone.now).save!
 
