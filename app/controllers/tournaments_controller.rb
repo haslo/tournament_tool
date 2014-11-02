@@ -9,40 +9,40 @@ class TournamentsController < ApplicationController
   expose(:tournament, attributes: :tournament_attributes)
   expose(:shown_tournament) { Tournament.find_by(show_key: params[:id]) }
 
-  expose(:edit_tabs) {
-    [
-      %w[update home],
-      %w[signup edit],
-      %w[schedule calendar],
-      %w[register list],
-      %w[run play],
-      %w[info qrcode],
-      %w[timeline time],
-      %w[standings tasks]
-    ]
-  }
-  expose(:show_tabs) {
-    [
-      %w[info qrcode],
-      %w[guide eye-open],
-      %w[timeline time],
-      %w[standings tasks]
-    ]
+  expose(:tabs) {
+    if params[:action] == 'edit'
+      [
+        %w[update home],
+        %w[signup edit],
+        %w[schedule calendar],
+        %w[register list],
+        %w[run play],
+        %w[info qrcode],
+        %w[timeline time],
+        %w[standings tasks]
+      ]
+    elsif params[:action] == 'show'
+      [
+        %w[info qrcode],
+        %w[guide eye-open],
+        %w[timeline time],
+        %w[standings tasks]
+      ]
+    else
+      raise 'unsupported action for tabs'
+    end
   }
   expose(:active_tab) do
-    active_tab = nil
-    if params[:tab].present?
-      tabs = __send__("#{params[:action]}_tabs").map{|t|t[0]}
-      active_tab = params[:tab] if tabs.include?(params[:tab])
-    end
-    if active_tab.nil?
+    if params[:tab].present? && tabs.map{|t|t[0]}.include?(params[:tab])
+      params[:tab]
+    else
       if Tournament.find_by(id: params[:id]).present?
         tournament.valid? ? 'signup' : 'update'
       elsif shown_tournament.present?
         'info'
+      else
+        raise 'unhandled active tab'
       end
-    else
-      active_tab
     end
   end
 

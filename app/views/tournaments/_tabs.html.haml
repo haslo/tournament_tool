@@ -1,0 +1,8 @@
+- content_for :tabs do
+  %ul.nav.nav-tabs
+    - tabs.each do |tab, icon|
+      - is_active = tab == active_tab
+      %li{class: is_active ? 'active' : ''}
+        = link_to({tab: tab}, {title: t(".titles.#{tab}")}) do
+          %span{class: "glyphicon glyphicon-#{icon}"}
+          %span.tab-description= t(".titles.#{tab}")

@@ -1,14 +1,7 @@
-- content_for :tabs do
-  %ul.nav.nav-tabs
-    - show_tabs.each do |tab, icon|
-      - is_active = tab == active_tab
-      %li{class: is_active ? 'active' : ''}
-        = link_to({tab: tab}, {title: t(".tabs.#{tab}")}) do
-          %span{class: "glyphicon glyphicon-#{icon}"}
-          %span.tab-description= t(".tabs.#{tab}")
+= render 'tabs'
 
 .page-header
   %h1= t('.title', tournament: shown_tournament.title)
 
 .container
-  = render active_tab, tournament: shown_tournament
+  = render "/tournaments/tabs/#{active_tab}", tournament: shown_tournament
