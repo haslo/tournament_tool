@@ -49,3 +49,7 @@ group :test do
   gem 'poltergeist'
   gem 'timecop'
 end
+
+group :production do
+  gem 'unicorn'
+end
