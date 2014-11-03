@@ -1,6 +1,6 @@
 Devise.setup do |config|
 
-  # config.secret_key = 'e4e67cf4cd3b03d18f5484e94b55eb012817254f99dafa126d6dd6b6ced7ea89d23b2d92d37b88c4377719300a280566395c1b52d7cd3332f019ba37de616560'
+  config.secret_key = 'c95e27142781316a645bd5f2bee5de88ca9391355e03d97bb7302fc3b43fe7fbac28027dd4b7173763e9c2b686dfe9a0d4d8011ebc53e2d87507dfb4c32c452d'
   # config.pepper = '55fcafc6662181b1839520d8cc874b284b7fed45c199c9b2dda454ae5a650c92a500c2e569cb0beec0ca90898d255471a9a6826e09da57bd24cc8dda333ebb6f'
 
   config.mailer_sender = 'haslo@haslo.ch'
