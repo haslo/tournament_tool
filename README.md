@@ -49,3 +49,4 @@ ToDo
 Lots of stuff - almost everything, in fact. Links:
 
 * http://sourcey.com/rails-4-omniauth-using-devise-with-twitter-facebook-and-linkedin/ and https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
+* https://github.com/zumbrunnen/betastore/commit/7fabe1e6917ecb7c05ce5df4fc212da1fc0ef087
